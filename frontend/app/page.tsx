@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Wind, Map, MessageSquare, ChevronRight } from "lucide-react";
+import Chatbot from "@/components/Chatbot";
 
 const SCREENS = [
   {
@@ -45,6 +46,10 @@ export default function Home() {
           Real-time AQI, outbreak tracking, and AI-powered itinerary planning —
           personalized to your health conditions.
         </p>
+      </div>
+
+      <div className="w-full max-w-2xl">
+        <Chatbot />
       </div>
 
       {/* Screen cards */}
