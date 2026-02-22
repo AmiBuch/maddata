@@ -20,6 +20,22 @@ HEALTH_KEYWORDS = [
     "health alert", "disease cluster", "public health emergency",
 ]
 
+# Article MUST contain at least one of these to be included (filters out
+# general health news, air quality reports, fitness articles, etc.)
+OUTBREAK_REQUIRED = [
+    "outbreak", "epidemic", "illness", "disease", "infected", "infection",
+    "cases", "patients", "sick", "virus", "bacteria", "pathogen",
+    "flu", "influenza", "norovirus", "salmonella", "COVID", "measles",
+    "health alert", "public health emergency", "disease cluster",
+    "hospital surge", "food poisoning", "food-borne",
+]
+
+
+def _is_outbreak_article(text: str) -> bool:
+    tl = text.lower()
+    return any(kw.lower() in tl for kw in OUTBREAK_REQUIRED)
+
+
 CONDITION_TAG_MAP = {
     "respiratory": ["flu", "influenza", "respiratory", "COVID", "pneumonia", "RSV", "asthma"],
     "GI":          ["norovirus", "salmonella", "food poisoning", "gastroenteritis", "diarrhea"],
@@ -69,6 +85,10 @@ async def fetch_outbreaks(city: str) -> list[OutbreakReport]:
         title = article.get("title", "") or ""
         desc = article.get("description", "") or ""
         combined = f"{title} {desc}"
+
+        # Skip articles that aren't actually about illness/outbreaks
+        if not _is_outbreak_article(combined):
+            continue
 
         uid = hashlib.md5(article.get("url", title).encode()).hexdigest()[:8]
         published = article.get("publishedAt", datetime.now(timezone.utc).isoformat())

@@ -152,12 +152,15 @@ function computeRisk(
 
   let betterTime: string | undefined;
   if (schedHour !== undefined && hourly.length > 0) {
-    const valid = hourly.filter(h => h.us_aqi !== undefined);
+    // Only consider waking hours (6 AM – 9 PM) so we never recommend midnight
+    const valid = hourly.filter(h => h.us_aqi !== undefined && h.hour >= 6 && h.hour <= 21);
     if (valid.length > 0) {
       const best = valid.reduce((a, b) => (a.us_aqi < b.us_aqi ? a : b));
       const schedAqi = hourly.find(h => h.hour === schedHour)?.us_aqi ?? aqi;
-      if (best.us_aqi < schedAqi * 0.8 && best.hour !== schedHour) {
-        betterTime = `Better air at ${String(best.hour).padStart(2, "0")}:00 (AQI ${best.us_aqi.toFixed(0)} vs ${schedAqi.toFixed(0)} scheduled)`;
+      // Always show the best time if it differs from scheduled (any improvement)
+      if (best.hour !== schedHour) {
+        const diff = schedAqi - best.us_aqi;
+        betterTime = `Best air: ${String(best.hour).padStart(2, "0")}:00 (AQI ${best.us_aqi.toFixed(0)}${diff > 0 ? `, ${diff.toFixed(0)} better than ${String(schedHour).padStart(2,"0")}:00` : ""})`;
       }
     }
   }
