@@ -1,5 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Wind, Map, MessageSquare, ChevronRight } from "lucide-react";
+import { useMemo } from "react";
+
+// Map only runs in browser (Leaflet needs window)
+const PredictiveMapLeaflet = dynamic(() => import("@/components/PredictiveMapLeaflet"),{ ssr: false });
 
 const SCREENS = [
   {
@@ -29,6 +36,30 @@ const SCREENS = [
 ];
 
 export default function Home() {
+
+function useMockAirQualityTimeseries() {
+  return useMemo(() => {
+    const base: [number, number] = [41.8781, -87.6298];
+    return [0, 1, 2].map((t) => ({
+      type: "FeatureCollection" as const,
+      features: Array.from({ length: 40 }, (_, i) => ({
+        type: "Feature" as const,
+        properties: {
+          aqi: 40 + t * 30 + Math.random() * 50,
+          weight: 0.5 + Math.random() * 0.5,
+        },
+        geometry: {
+          type: "Point" as const,
+          coordinates: [
+            base[1] + (Math.random() - 0.5) * 0.06,
+            base[0] + (Math.random() - 0.5) * 0.05,
+          ],
+        },
+      })),
+    }));
+  }, []);
+}
+  const airQualityTimeseries = useMockAirQualityTimeseries();
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] text-center gap-12">
       {/* Hero */}
@@ -46,6 +77,18 @@ export default function Home() {
           personalized to your health conditions.
         </p>
       </div>
+
+      {/* Map: overview of risk / conditions */}
+      <div className="w-full max-w-4xl space-y-4">
+
+    <div className="card overflow-hidden p-2" style={{ height: 380 }}>
+      <PredictiveMapLeaflet
+        className="w-full h-full"
+        initialZoom={12}
+        airQualityTimeseries={airQualityTimeseries}
+      />
+    </div>
+  </div>
 
       {/* Screen cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">

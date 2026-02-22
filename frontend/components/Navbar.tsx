@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Wind, Map, MessageSquare, Activity } from "lucide-react";
+import { Wind, Map, MessageSquare, Activity, Layers } from "lucide-react";
 
 const LINKS = [
   { href: "/now",       label: "Right Now",        icon: Wind },

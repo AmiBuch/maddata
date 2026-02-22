@@ -48,7 +48,7 @@ export default function NowPage() {
     }
     navigator.geolocation.getCurrentPosition(
       (pos) => fetchConditions(pos.coords.latitude, pos.coords.longitude),
-      () => setError("Location access denied. Using Chicago as default.") || fetchConditions(41.8781, -87.6298),
+      () => { setError("Location access denied. Using Chicago as default."); fetchConditions(41.8781, -87.6298); },
     );
   };
 
