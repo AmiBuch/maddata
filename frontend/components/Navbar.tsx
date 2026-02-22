@@ -7,7 +7,7 @@ import { Wind, Map, MessageSquare, Activity } from "lucide-react";
 const LINKS = [
   { href: "/now",       label: "Right Now",        icon: Wind },
   { href: "/itinerary", label: "Upload Itinerary",  icon: Map },
-  { href: "/plan",      label: "Plan with AI",      icon: MessageSquare },
+  { href: "/plan",      label: "Plan with Pathfinder",      icon: MessageSquare },
 ];
 
 export default function Navbar() {

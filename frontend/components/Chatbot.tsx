@@ -36,7 +36,7 @@ export default function Chatbot() {
       role: "assistant",
       content: (
         <p>
-          Hi! I'm <strong>Pathfinder</strong>. I use real-time environmental and health data, including weather forecasts, air quality, and public health alerts, to generate personalized travel recommendations.
+          Hi! I'm <strong>Pathfinder</strong>. Plan your trip with real-time health, weather, and location insights.
         </p>
       ),
     },
@@ -196,7 +196,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="flex flex-col h-full min-h-[400px] max-h-[600px] sm:max-h-[calc(100vh-200px)]">
+    <div className="flex flex-col h-full min-h-[400px]">
       {/* Form */}
       <form
         onSubmit={handleSubmit}

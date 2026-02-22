@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Wind, Map, MessageSquare, ChevronRight } from "lucide-react";
-import Chatbot from "@/components/Chatbot";
 
 const SCREENS = [
   {
@@ -22,8 +21,8 @@ const SCREENS = [
   {
     href: "/plan",
     icon: MessageSquare,
-    title: "Plan with AI",
-    description: "Chat with Breathe to build a health-safe itinerary from scratch.",
+    title: "Plan with Pathfinder",
+    description: "Get personalized recommendations for restaurants and activities.",
     color: "text-sky-400",
     bg: "bg-sky-500/10 border-sky-500/20",
   },
@@ -46,10 +45,12 @@ export default function Home() {
           combining environmental data, public health alerts, and location intelligence
           to identify safe activities, restaurants, and itineraries for a given destination.
         </p>
-      </div>
-
-      <div className="w-full max-w-2xl">
-        <Chatbot />
+        <Link
+          href="/plan"
+          className="inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-lg border border-teal-500/30 bg-teal-500/10 text-teal-400 font-medium hover:bg-teal-500/20 transition-colors"
+        >
+          Plan your trip <ChevronRight size={16} />
+        </Link>
       </div>
 
       {/* Screen cards */}
