@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import conditions, itinerary, chat, outbreaks, forecast
+from app.routers import conditions, itinerary, chat, outbreaks, forecast, chatbot
 from app.config import settings
 
 app = FastAPI(
-    title="Breathe API",
+    title="PurePath API",
     description="Health-aware travel intelligence platform",
     version="1.0.0",
 )
@@ -22,11 +22,11 @@ app.include_router(itinerary.router, prefix="/api/itinerary", tags=["itinerary"]
 app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
 app.include_router(outbreaks.router, prefix="/api/outbreaks", tags=["outbreaks"])
 app.include_router(forecast.router,  prefix="/api/forecast",  tags=["forecast"])
-
+app.include_router(chatbot.router,   prefix="/api/chatbot",  tags=["chatbot"])
 
 @app.get("/")
 async def root():
-    return {"status": "ok", "service": "Breathe API"}
+    return {"status": "ok", "service": "PurePath API"}
 
 
 @app.get("/health")

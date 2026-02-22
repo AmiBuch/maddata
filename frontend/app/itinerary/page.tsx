@@ -168,43 +168,22 @@ function computeRisk(
     if (o3 > 70 && conds.some(c => ["asthma", "copd", "allergies"].includes(c.toLowerCase()))) {
         flags.push(`O₃ ${o3.toFixed(1)} µg/m³ — ozone elevated, respiratory risk`);
     }
-  }
+    if (tempF > 95) flags.push(`Heat ${tempF.toFixed(0)}°F — stay hydrated`);
+    if (hum > 80) flags.push(`Humidity ${hum.toFixed(0)}% — may worsen breathing`);
 
-  let aqiScore = 0;
-  if (aqi > 100) aqiScore = (aqi - 100) / 4;
-  else if (aqi > 50) aqiScore = (aqi - 50) / 2.5;
-  aqiScore = Math.min(40, aqiScore * aqiW * aqiExposure);
-
-  let heatScore = 0;
-  if (tempF > 90) heatScore += Math.min(20, (tempF - 90) * 2) * heatW;
-  if (hum  > 70) heatScore += Math.min(10, (hum - 70) / 3) * humW;
-  heatScore = Math.min(30, heatScore);
-
-  const score = Math.round(Math.min(100, aqiScore + heatScore));
-  const tier  = score < 25 ? "Low" : score < 50 ? "Moderate" : score < 75 ? "High" : "Very High";
-
-  const flags: string[] = [];
-  if (aqi > 150) flags.push(`AQI ${aqi.toFixed(0)} — hazardous for outdoor activity`);
-  else if (aqi > 100 && isOutdoor) flags.push(`AQI ${aqi.toFixed(0)} — limit strenuous outdoor exertion`);
-  if (pm25 > 35) flags.push(`PM2.5 ${pm25.toFixed(1)} µg/m³ — elevated fine particles`);
-  if (o3 > 70 && conds.some(c => ["asthma", "copd", "allergies"].includes(c.toLowerCase()))) {
-    flags.push(`O₃ ${o3.toFixed(1)} µg/m³ — ozone elevated, respiratory risk`);
-  }
-  if (tempF > 95) flags.push(`Heat ${tempF.toFixed(0)}°F — stay hydrated`);
-  if (hum > 80) flags.push(`Humidity ${hum.toFixed(0)}% — may worsen breathing`);
-
-  let betterTime: string | undefined;
-  if (schedHour !== undefined && hourly.length > 0) {
-    // Only consider waking hours (6 AM – 9 PM) so we never recommend midnight
-    const valid = hourly.filter(h => h.us_aqi !== undefined && h.hour >= 6 && h.hour <= 21);
-    if (valid.length > 0) {
-      const best = valid.reduce((a, b) => (a.us_aqi < b.us_aqi ? a : b));
-      const schedAqi = hourly.find(h => h.hour === schedHour)?.us_aqi ?? aqi;
-      // Always show the best time if it differs from scheduled (any improvement)
-      if (best.hour !== schedHour) {
-        const diff = schedAqi - best.us_aqi;
-        betterTime = `Best air: ${String(best.hour).padStart(2, "0")}:00 (AQI ${best.us_aqi.toFixed(0)}${diff > 0 ? `, ${diff.toFixed(0)} better than ${String(schedHour).padStart(2,"0")}:00` : ""})`;
-      }
+    let betterTime: string | undefined;
+    if (schedHour !== undefined && hourly.length > 0) {
+        // Only consider waking hours (6 AM – 9 PM) so we never recommend midnight
+        const valid = hourly.filter(h => h.us_aqi !== undefined && h.hour >= 6 && h.hour <= 21);
+        if (valid.length > 0) {
+            const best = valid.reduce((a, b) => (a.us_aqi < b.us_aqi ? a : b));
+            const schedAqi = hourly.find(h => h.hour === schedHour)?.us_aqi ?? aqi;
+            // Always show the best time if it differs from scheduled (any improvement)
+            if (best.hour !== schedHour) {
+                const diff = schedAqi - best.us_aqi;
+                betterTime = `Best air: ${String(best.hour).padStart(2, "0")}:00 (AQI ${best.us_aqi.toFixed(0)}${diff > 0 ? `, ${diff.toFixed(0)} better than ${String(schedHour).padStart(2,"0")}:00` : ""})`;
+            }
+        }
     }
 
     return { tier, score, flags, betterTime };
@@ -310,7 +289,7 @@ async function geocode(query: string): Promise<{ lat: number; lon: number } | nu
     try {
         const r = await fetch(
             `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`,
-            { headers: { "User-Agent": "breathe-travel-app/1.0" } },
+            { headers: { "User-Agent": "purepath-app/1.0" } },
         );
         const data = await r.json();
         const result = data.length ? { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) } : null;

@@ -1,4 +1,4 @@
-# Breathe 🌬️
+# PurePath
 
 > **Is it safe for you to be there — and if so, when, where, and how?**
 
@@ -113,4 +113,4 @@ maddata/
 Every user who reports a symptom flare during a trip tags it with location + time + condition.
 That feeds back into the prediction model.
 
-Over time: Breathe knows that asthmatic users in Chicago's River North neighborhood in July, when ozone > 100, report flare-ups 68% of the time — **a dataset no one has built before.**
+Over time: PurePath knows that asthmatic users in Chicago's River North neighborhood in July, when ozone > 100, report flare-ups 68% of the time — **a dataset no one has built before.**

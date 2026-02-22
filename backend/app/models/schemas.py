@@ -162,6 +162,7 @@ class ChatResponse(BaseModel):
     suggested_activities: Optional[List[str]] = None
 
 
+
 # ── Heatmap ───────────────────────────────────────────────────────────────────
 
 class HeatmapCell(BaseModel):

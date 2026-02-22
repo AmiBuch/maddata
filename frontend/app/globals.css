@@ -13,19 +13,19 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100;
+    @apply bg-white text-slate-800;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-slate-900 border border-slate-800 rounded-xl p-5;
+    @apply bg-white border border-slate-200 rounded-xl p-5 shadow-sm;
   }
   .btn-primary {
-    @apply bg-brand-500 hover:bg-brand-400 text-white font-medium px-5 py-2.5 rounded-lg transition-colors;
+    @apply bg-brand-500 hover:bg-brand-600 text-white font-medium px-5 py-2.5 rounded-lg transition-colors;
   }
   .btn-ghost {
-    @apply border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium px-5 py-2.5 rounded-lg transition-colors;
+    @apply border border-slate-300 hover:border-brand-400 text-slate-600 hover:text-brand-600 font-medium px-5 py-2.5 rounded-lg transition-colors;
   }
   .risk-badge {
     @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold;

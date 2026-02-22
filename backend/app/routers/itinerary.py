@@ -30,7 +30,7 @@ from app.services.weather import get_weather
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
-_geo = Nominatim(user_agent="breathe-app")
+_geo = Nominatim(user_agent="purepath-app")
 
 
 def _geocode(city: str) -> tuple[float, float]:

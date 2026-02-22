@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(c:/Users/amiab/OneDrive/Desktop/maddata/backend/.venv/Scripts/python.exe:*)"
+    ]
+  }
+}

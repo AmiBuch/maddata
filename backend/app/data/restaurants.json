@@ -1,0 +1,1453 @@
+[
+  {
+    "name": "Tony's Restaurant & 3rd Street Cafe",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Specialty Food, Steakhouses, Food, Italian, Pizza, Pasta Shops"
+  },
+  {
+    "name": "Crafty Crab",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Seafood, Restaurants"
+  },
+  {
+    "name": "Chew Doin Fried Chicken & Ramen",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Chicken Shop, Ramen, Japanese"
+  },
+  {
+    "name": "The Cobblestone Eatery and Drinkery",
+    "city": "Lebanon",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Nightlife, Breakfast & Brunch, Event Planning & Services, Venues & Event Spaces, Italian, Bars, Restaurants"
+  },
+  {
+    "name": "Joe’s Pizza and Pasta",
+    "city": "Godfrey",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Salad, Pizza, Restaurants, Italian"
+  },
+  {
+    "name": "Triple R's Smokehouse",
+    "city": "Mascoutah",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Barbeque"
+  },
+  {
+    "name": "Edley’s",
+    "city": "Glen Carbon",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Barbeque, Restaurants"
+  },
+  {
+    "name": "Imo's Pizza",
+    "city": "Godfrey",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Restaurants, Pizza"
+  },
+  {
+    "name": "Cheddar's Scratch Kitchen",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Comfort Food, American (New), American (Traditional), Restaurants, Southern"
+  },
+  {
+    "name": "Aiello's Pizzeria",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, Pizza"
+  },
+  {
+    "name": "Downtown Diner",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, Diners"
+  },
+  {
+    "name": "The Wine Tap",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Bars, Wine Bars, Nightlife, Restaurants, Italian"
+  },
+  {
+    "name": "Subliminal Grilled Subs & More",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Salad, Soup, Sandwiches"
+  },
+  {
+    "name": "Wendy's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Restaurants, Fast Food, Burgers"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Restaurants, Fast Food, Burgers, Coffee & Tea, Food"
+  },
+  {
+    "name": "Taco Bell",
+    "city": "Cahokia",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Fast Food, Restaurants, Breakfast & Brunch, Vegetarian, Mexican, Tacos"
+  },
+  {
+    "name": "Super Gyros",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Fast Food, Greek, Italian, Restaurants"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Restaurants, Coffee & Tea, Food, Burgers, Fast Food"
+  },
+  {
+    "name": "Valentine's Restaurant",
+    "city": "Freeburg",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Steakhouses, Salad, Restaurants, Seafood"
+  },
+  {
+    "name": "Mexico Tipico",
+    "city": "Lebanon",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Mexican, Restaurants, Salad, Soup"
+  },
+  {
+    "name": "Li Chinese Reaturant",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Chinese, Restaurants"
+  },
+  {
+    "name": "Social Gastropub",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Gastropubs, American (New)"
+  },
+  {
+    "name": "Hy-Ho Cafe",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Cafes, Restaurants"
+  },
+  {
+    "name": "Taco Bell",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 1.0,
+    "categories": "Restaurants, Fast Food, Tex-Mex, Tacos, Mexican"
+  },
+  {
+    "name": "Carisilo's Mexican Restaurant",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Mexican, Restaurants"
+  },
+  {
+    "name": "Donatello's",
+    "city": "Maryville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Italian, Restaurants"
+  },
+  {
+    "name": "Mokka Kaffeehaus",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Food, Coffee & Tea, Breakfast & Brunch"
+  },
+  {
+    "name": "Clara B's Kitchen Table",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Restaurants, Southern, Food Trucks, Food, Breakfast & Brunch, Desserts"
+  },
+  {
+    "name": "Lascelles Granite City",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "American (Traditional), Restaurants, Tapas Bars, American (New)"
+  },
+  {
+    "name": "Golden Corral Buffet & Grill",
+    "city": "Shiloh",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Buffets, American (Traditional), Restaurants"
+  },
+  {
+    "name": "Franks Restaurant",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Breakfast & Brunch, Cafes, American (New), Salad, Restaurants, Sandwiches"
+  },
+  {
+    "name": "Imo's Pizza",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Health & Medical, Pizza, Restaurants, Chiropractors"
+  },
+  {
+    "name": "Gentelin's On Broadway",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, American (New)"
+  },
+  {
+    "name": "Taco Bell",
+    "city": "Troy",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Restaurants, Tex-Mex, Fast Food, Mexican, Tacos, Breakfast & Brunch"
+  },
+  {
+    "name": "Steak-Out",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Event Planning & Services, Food Delivery Services, Caterers, Restaurants, Food"
+  },
+  {
+    "name": "Aroy Thai",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Thai, Restaurants"
+  },
+  {
+    "name": "Arby's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Restaurants, Sandwiches, Fast Food"
+  },
+  {
+    "name": "Goldy's Chick - n - Mex",
+    "city": "Wood River",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Fast Food, Mexican, Chicken Shop"
+  },
+  {
+    "name": "Itty-Bitty",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Sandwiches, Burgers, American (Traditional), Restaurants"
+  },
+  {
+    "name": "Subway",
+    "city": "Millstadt",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Restaurants, Sandwiches, Fast Food"
+  },
+  {
+    "name": "Jimmy John's",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Food, Food Delivery Services, Fast Food, Delis, Sandwiches, Restaurants"
+  },
+  {
+    "name": "Wicked Smoke Bar B Que",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "American (Traditional), Sandwiches, Restaurants, Barbeque"
+  },
+  {
+    "name": "Red Lobster",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Seafood, American (Traditional), Restaurants"
+  },
+  {
+    "name": "Good Times Saloon",
+    "city": "Dupo",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Nightlife, Sports Bars, Beer Bar, Bars, Restaurants, American (Traditional)"
+  },
+  {
+    "name": "QDOBA Mexican Eats",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Fast Food, Caterers, Restaurants, Event Planning & Services, Mexican"
+  },
+  {
+    "name": "Red Apple",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Restaurants, Breakfast & Brunch"
+  },
+  {
+    "name": "Wood Bakery",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Donuts, Restaurants, Food, Bakeries"
+  },
+  {
+    "name": "Bully's Smokehouse",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Food, Restaurants, American (Traditional), Caterers, Event Planning & Services, Smokehouse, Barbeque"
+  },
+  {
+    "name": "Taco Bell",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Mexican, Tacos, Tex-Mex, Fast Food, Breakfast & Brunch, Restaurants"
+  },
+  {
+    "name": "Luna",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Italian, Chicken Wings, Pizza, Restaurants"
+  },
+  {
+    "name": "The Franchise Sports Bar & Grill",
+    "city": "Wood River",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Restaurants, Bars, Sports Bars, Nightlife, Burgers"
+  },
+  {
+    "name": "Olive Garden Italian Restaurant",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Salad, Restaurants, Nightlife, Bars, Wine Bars, Italian, Soup"
+  },
+  {
+    "name": "Captain D's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "American (Traditional), Fast Food, Restaurants, Fish & Chips, Seafood"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Caseyville",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Burgers, Coffee & Tea, Fast Food, Restaurants, Food"
+  },
+  {
+    "name": "QuikTrip",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Convenience Stores, Gas Stations, Automotive, Food, Motorcycle Dealers, Restaurants, Fast Food"
+  },
+  {
+    "name": "Fire-n-Smoke Wood River",
+    "city": "Wood River",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Southern, Barbeque, Restaurants"
+  },
+  {
+    "name": "Bobeck's Sports Bar & Grill",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Nightlife, Bars, American (Traditional), Restaurants"
+  },
+  {
+    "name": "Papa Murphy's",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Pizza, Restaurants"
+  },
+  {
+    "name": "Catrina's",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Bars, Latin American, Nightlife, Cocktail Bars, Restaurants, Mexican"
+  },
+  {
+    "name": "Washy's Pub",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Bars, Pubs, Burgers, American (Traditional), Nightlife"
+  },
+  {
+    "name": "Acropolis",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Greek, Restaurants"
+  },
+  {
+    "name": "Rally's",
+    "city": "Cahokia",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Restaurants, Burgers, Fast Food"
+  },
+  {
+    "name": "Sushi Ai",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Sushi Bars, Japanese"
+  },
+  {
+    "name": "Joe's Crab Shack",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "American (Traditional), Seafood, Restaurants"
+  },
+  {
+    "name": "Firehouse Subs",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, Sandwiches, Delis, Fast Food"
+  },
+  {
+    "name": "Rapid Fire Sandwiches & Treats",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Sandwiches, Restaurants, Burgers"
+  },
+  {
+    "name": "Sonic Drive-In",
+    "city": "O'fallon",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Burgers, Ice Cream & Frozen Yogurt, Restaurants, Food, Fast Food"
+  },
+  {
+    "name": "Chick-fil-A",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Event Planning & Services, Restaurants, Caterers, Fast Food, Chicken Shop"
+  },
+  {
+    "name": "Hardee's",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Fast Food, Restaurants, Burgers"
+  },
+  {
+    "name": "Subway",
+    "city": "Maryville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Sandwiches, Restaurants, Fast Food"
+  },
+  {
+    "name": "Wang Gang Asian",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Asian Fusion, Restaurants"
+  },
+  {
+    "name": "Papa Vito's - Millstadt",
+    "city": "Millstadt",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Pizza, Italian, Restaurants"
+  },
+  {
+    "name": "Great Rivers Tap & Grill",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Hotels, Restaurants, Diners, American (New), Hotels & Travel, American (Traditional), Event Planning & Services, Gastropubs"
+  },
+  {
+    "name": "Dragon Palace",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Restaurants, Chinese"
+  },
+  {
+    "name": "Subway",
+    "city": "Troy",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Fast Food, Sandwiches, Restaurants"
+  },
+  {
+    "name": "Arby's",
+    "city": "Godfrey",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Sandwiches, Fast Food, Restaurants"
+  },
+  {
+    "name": "Grace Manor Restaurant",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants"
+  },
+  {
+    "name": "WangGang Asian Eats N Beats",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Asian Fusion"
+  },
+  {
+    "name": "Thai House",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Thai, Restaurants, Noodles, Vegetarian"
+  },
+  {
+    "name": "Girl & The Goat",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.7,
+    "categories": "Reservations required, Restaurants, Vegetarian"
+  },
+
+  {
+    "name": "Aba",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.8,
+    "categories": "Mediterranean, Restaurants, Vegetarian"
+  },
+
+  {
+    "name": "Max & Erma's",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "American (New), Restaurants"
+  },
+  {
+    "name": "KFC",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Fast Food, Chicken Shop, Chicken Wings, Restaurants"
+  },
+  {
+    "name": "Casa Azteca",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, American (New), Mexican"
+  },
+  {
+    "name": "Jimmy The Greek's",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Greek, Restaurants"
+  },
+  {
+    "name": "Rally's",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Burgers, Fast Food, Restaurants"
+  },
+  {
+    "name": "Fletcher's Kitchen & Tap",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Pizza, Restaurants, Steakhouses, American (Traditional)"
+  },
+  {
+    "name": "Dewey's Pizza",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Pizza, Italian, Salad, Gluten-Free"
+  },
+  {
+    "name": "Loomy's",
+    "city": "Troy",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "American (New), Restaurants"
+  },
+  {
+    "name": "Burger King",
+    "city": "Pontoon Beach",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Fast Food, Restaurants, Burgers"
+  },
+  {
+    "name": "St. Louis Bread",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Food, Soup, Breakfast & Brunch, Bagels, Salad, American (New), Sandwiches, Restaurants"
+  },
+  {
+    "name": "Gia's Pizza",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Pizza"
+  },
+  {
+    "name": "McDill's Irish Pub",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Bars, American (Traditional), Restaurants, Dive Bars, Nightlife, Irish Pub"
+  },
+  {
+    "name": "Hardee's",
+    "city": "Wood River",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Restaurants, Fast Food, Burgers, Sandwiches"
+  },
+  {
+    "name": "4 Hermanos Mexican Cuisine",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Bars, Nightlife, Hot Dogs, Restaurants, Mexican"
+  },
+  {
+    "name": "Cunetto's Corner Cucina",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Italian, Restaurants"
+  },
+  {
+    "name": "Firehouse Subs",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Fast Food, Restaurants, Sandwiches, Delis"
+  },
+  {
+    "name": "Dairy Queen Grill & Chill",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Food, Ice Cream & Frozen Yogurt, Fast Food, Burgers"
+  },
+  {
+    "name": "Jack in the Box",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Fast Food, Mexican, Restaurants, Breakfast & Brunch, Tacos, Burgers"
+  },
+  {
+    "name": "Edison's Entertainment Complex",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Active Life, Restaurants, Arcades, Arts & Entertainment, American (New), Bowling"
+  },
+  {
+    "name": "Sonic Drive-In",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Fast Food, Burgers, Food, Restaurants, Ice Cream & Frozen Yogurt"
+  },
+  {
+    "name": "McDonald's",
+    "city": "East Alton",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Burgers, Restaurants, Coffee & Tea, Fast Food, Food"
+  },
+  {
+    "name": "Domino's Pizza",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Pizza, Restaurants, Sandwiches, Chicken Wings"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Restaurants, Coffee & Tea, Burgers, Fast Food, Food"
+  },
+  {
+    "name": "West End Bar & Restaurant",
+    "city": "Millstadt",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Burgers, Sandwiches, Restaurants, Pizza"
+  },
+  {
+    "name": "Mungo's",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Italian, Restaurants, Steakhouses, Salad"
+  },
+  {
+    "name": "Callahan's Corner",
+    "city": "Troy",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "American (New), Nightlife, Bars, Restaurants, Sports Bars"
+  },
+  {
+    "name": "Lion's Choice",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Sandwiches, Fast Food"
+  },
+  {
+    "name": "Denny's",
+    "city": "Pontoon Beach",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Restaurants, Breakfast & Brunch, Diners, American (Traditional)"
+  },
+  {
+    "name": "Bindy's",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Restaurants"
+  },
+  {
+    "name": "Marco's Pizza",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Food Delivery Services, Pizza, Italian, Restaurants, Chicken Wings, Food"
+  },
+  {
+    "name": "Taco Bell",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Restaurants, Breakfast & Brunch, Tacos, Mexican, Tex-Mex, Fast Food"
+  },
+  {
+    "name": "Agostino's Restaurant and Bar",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Italian, American (Traditional), Event Planning & Services, Caterers, Restaurants, Nightlife, Bars, Venues & Event Spaces"
+  },
+  {
+    "name": "Joe K's",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Breakfast & Brunch, American (Traditional)"
+  },
+  {
+    "name": "300 State",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Bars, Venues & Event Spaces, Nightlife, Pizza, Restaurants, Event Planning & Services"
+  },
+  {
+    "name": "Fazoli's",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Italian, Fast Food"
+  },
+  {
+    "name": "Tim Horton's Cafe & Bake Shop",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, Food, Donuts, Coffee & Tea, Bakeries, Sandwiches, Breakfast & Brunch"
+  },
+  {
+    "name": "Mariachi's",
+    "city": "Millstadt",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, Mexican"
+  },
+  {
+    "name": "Chicken Salad Chick",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Southern, Salad, Soup, Sandwiches, American (New), Restaurants, Delis, Chicken Shop"
+  },
+  {
+    "name": "Papa John's Pizza",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Pizza, Restaurants"
+  },
+  {
+    "name": "Seven Belleville",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Bars, Lounges, Nightlife, Restaurants, Sushi Bars, Venues & Event Spaces, Event Planning & Services"
+  },
+  {
+    "name": "Shiloh Valley Grill",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "American (Traditional), Restaurants"
+  },
+  {
+    "name": "Ragin Cajun Piano Bar",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Arts & Entertainment, Nightlife, Music Venues, Bars, Lounges, Cajun/Creole, Restaurants"
+  },
+  {
+    "name": "The Corner Chill & Grill",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, American (Traditional), Nightlife, Bars"
+  },
+  {
+    "name": "Highflyers Grille",
+    "city": "East Alton",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "American (New), Restaurants, Pizza"
+  },
+  {
+    "name": "You Korean And Japanese Best Cuisine",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Korean, Sushi Bars, Japanese"
+  },
+  {
+    "name": "Hardee's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Burgers, Breakfast & Brunch, Restaurants, Fast Food"
+  },
+  {
+    "name": "El Maguey",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Mexican, Restaurants"
+  },
+  {
+    "name": "17th Street Bar & Grill",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Barbeque, Restaurants"
+  },
+  {
+    "name": "Moussalli’s Prime",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Steakhouses, Nightlife, Seafood, Cocktail Bars, Bars, Restaurants, American (New), Wine Bars"
+  },
+  {
+    "name": "BEAST Craft BBQ",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Barbeque"
+  },
+  {
+    "name": "Chipotle Mexican Grill",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Mexican, Restaurants, Fast Food"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Food, Burgers, Restaurants, Coffee & Tea, Fast Food"
+  },
+  {
+    "name": "Ahne's Bakery",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Restaurants, Bakeries, Food"
+  },
+  {
+    "name": "Coyote's Ranch Grill & Saloon",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "American (Traditional), Restaurants"
+  },
+  {
+    "name": "Golden Oak",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Pancakes, American (New), Wraps, Burgers, Breakfast & Brunch, Restaurants"
+  },
+  {
+    "name": "Cafe on the Abbey",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, American (Traditional), American (New), Cafes, Food, Bakeries, Breakfast & Brunch"
+  },
+  {
+    "name": "Mokka Cafe",
+    "city": "Columbia",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Cafes, Coffee & Tea, Food"
+  },
+  {
+    "name": "Geo's Wings & More",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Barbeque, Restaurants, Sandwiches, Chicken Wings, Chinese"
+  },
+  {
+    "name": "Troy Family Restaurant",
+    "city": "Troy",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Restaurants, American (New), Breakfast & Brunch"
+  },
+  {
+    "name": "Subway",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Fast Food, Sandwiches, Restaurants"
+  },
+  {
+    "name": "Red Robin Gourmet Burgers and Brews",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Hot Dogs, American (Traditional), Restaurants, Burgers"
+  },
+  {
+    "name": "Subway",
+    "city": "Bellville",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Restaurants, Sandwiches, Fast Food"
+  },
+  {
+    "name": "Park Grill",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, American (Traditional), Salad, Burgers"
+  },
+  {
+    "name": "First Stop Bake Shop",
+    "city": "Rosewood Heights",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Pizza, Sandwiches, Donuts, Restaurants, Food, Bakeries"
+  },
+  {
+    "name": "The Weeping Willow Tea Room",
+    "city": "Glen Carbon",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Soup, Restaurants, Food, Tea Rooms, Breakfast & Brunch, Sandwiches"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Food, Fast Food, Restaurants, Burgers, Coffee & Tea"
+  },
+  {
+    "name": "D.S. Vespers Sports Pub and Eatery",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Nightlife, Active Life, Shopping, Restaurants, Bars, Sports Bars, American (New), Mini Golf, Hobby Shops, Pubs"
+  },
+  {
+    "name": "Sandwich Shop",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Sandwiches, Restaurants"
+  },
+  {
+    "name": "Classic K Hamburgers",
+    "city": "Cahokia",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, Fast Food, Burgers"
+  },
+  {
+    "name": "Sake Sushi Bar and Grill",
+    "city": "O Fallon",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Japanese, Restaurants, Sushi Bars"
+  },
+  {
+    "name": "Nettie B's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Restaurants, Seafood, Southern"
+  },
+  {
+    "name": "New China",
+    "city": "Bethalto",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Chinese"
+  },
+  {
+    "name": "Steak ’n Shake",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 1.0,
+    "categories": "American (New), Restaurants, Burgers, American (Traditional), Food, Diners, Breakfast & Brunch, Juice Bars & Smoothies, Fast Food"
+  },
+  {
+    "name": "Jack in the Box",
+    "city": "Glen Carbon",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Fast Food, Tacos, Restaurants, Breakfast & Brunch, Burgers, Mexican"
+  },
+  {
+    "name": "Plan Shop Live",
+    "city": "Maryville",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Food, Breakfast & Brunch, Sandwiches, Coffee & Tea, Specialty Food, Restaurants"
+  },
+  {
+    "name": "McDonald's",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Fast Food, Coffee & Tea, Burgers, Food, Restaurants"
+  },
+  {
+    "name": "QDOBA Mexican Eats",
+    "city": "Shiloh",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Caterers, Event Planning & Services, Restaurants, Fast Food, Mexican"
+  },
+  {
+    "name": "Long John Silver's",
+    "city": "Wood River",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Seafood, Fast Food, Restaurants"
+  },
+  {
+    "name": "Flamentco's the Place",
+    "city": "O'fallon",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Pizza, Restaurants, Diners, Food, Chicken Wings, American (New), Salad"
+  },
+  {
+    "name": "The Pie Pantry",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Desserts, Restaurants, Food, American (Traditional)"
+  },
+  {
+    "name": "Wendy's",
+    "city": "Fairview Hts.",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Fast Food, Restaurants, Burgers"
+  },
+  {
+    "name": "Penn Station East Coast Subs",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Sandwiches, American (New), Cheesesteaks, Restaurants"
+  },
+  {
+    "name": "Hemingway's Zen Garden",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Beer, Wine & Spirits, Bars, American (Traditional), Nightlife, Food, Wine Bars, Pubs"
+  },
+  {
+    "name": "Texas Roadhouse",
+    "city": "Shiloh",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Barbeque, Restaurants, Steakhouses"
+  },
+  {
+    "name": "1818 Chophouse",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Steakhouses, Breakfast & Brunch, Nightlife, Sandwiches, Wine Bars, Restaurants, Cocktail Bars, Bars"
+  },
+  {
+    "name": "Dandy Inn",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "American (Traditional), Restaurants"
+  },
+  {
+    "name": "Frederico's",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Pizza, Italian, Restaurants"
+  },
+  {
+    "name": "Crazy Bowls & Wraps",
+    "city": "Shiloh",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Salad, Fast Food, Wraps, Restaurants"
+  },
+  {
+    "name": "Dairy Queen",
+    "city": "Glen Carbon",
+    "state": "IL",
+    "stars": 1.5,
+    "categories": "Ice Cream & Frozen Yogurt, Restaurants, Burgers, Food, Fast Food"
+  },
+  {
+    "name": "Penn Station",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Cheesesteaks, Restaurants, Sandwiches"
+  },
+  {
+    "name": "Smokin K's BBQ & More",
+    "city": "Millstadt",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Event Planning & Services, Bars, Breakfast & Brunch, Barbeque, Caterers, Sandwiches, Nightlife, Restaurants"
+  },
+  {
+    "name": "O’bar Cafe",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Breakfast & Brunch, Coffee & Tea, Juice Bars & Smoothies, Food, Restaurants"
+  },
+  {
+    "name": "Belleville Fish and Chicken",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Tapas/Small Plates, Food, Chicken Wings, Desserts, Southern, Sandwiches, Seafood, Restaurants"
+  },
+  {
+    "name": "Hokkaido Seafood Buffet and Grill",
+    "city": "Swansea",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Buffets, Seafood, Chinese, Restaurants"
+  },
+  {
+    "name": "Bootsie's",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "American (New), Restaurants, Bakeries, Food, Breakfast & Brunch"
+  },
+  {
+    "name": "Doc's Smokehouse",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Event Planning & Services, Food, Burgers, Salad, Sandwiches, Restaurants, Smokehouse, Caterers, Fast Food, American (Traditional), Barbeque"
+  },
+  {
+    "name": "Taqueria Olvera",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Mexican"
+  },
+  {
+    "name": "Kelly's Butcher Shop & Deli",
+    "city": "Troy",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Food, Restaurants, Specialty Food, Cheese Shops, Meat Shops, Delis"
+  },
+  {
+    "name": "Tin Rooster",
+    "city": "Waterloo",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Restaurants, Food, Breakfast & Brunch, Bakeries"
+  },
+  {
+    "name": "Dairyland",
+    "city": "Dupo",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Restaurants"
+  },
+  {
+    "name": "Taco Bell",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Breakfast & Brunch, Tacos, Restaurants, Fast Food, Tex-Mex, Mexican"
+  },
+  {
+    "name": "Cracker Barrel Old Country Store",
+    "city": "Shiloh",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "American (Traditional), Event Planning & Services, Breakfast & Brunch, Caterers, Comfort Food, Southern, Restaurants, American (New)"
+  },
+  {
+    "name": "St. Louis Bread",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Restaurants, Salad, Breakfast & Brunch, Soup, Bagels, Food, Sandwiches"
+  },
+  {
+    "name": "Sawmill BBQ",
+    "city": "Cahokia",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Specialty Food, Sandwiches, Barbeque, Restaurants, Food, Breakfast & Brunch"
+  },
+  {
+    "name": "Olympic Restaurant",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Greek, Restaurants"
+  },
+  {
+    "name": "Buffalo Wild Wings",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Bars, American (Traditional), Chicken Wings, Sports Bars, Nightlife, Restaurants"
+  },
+  {
+    "name": "The Happy Bakery",
+    "city": "O'Fallon",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Food, Restaurants, Vegetarian, Custom Cakes, Specialty Food, Vegan, Cupcakes, Bakeries"
+  },
+  {
+    "name": "Domino's Pizza",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 2.0,
+    "categories": "Sandwiches, Pizza, Chicken Wings, Restaurants"
+  },
+  {
+    "name": "Applebee's Grill + Bar",
+    "city": "Granite City",
+    "state": "IL",
+    "stars": 2.5,
+    "categories": "Steakhouses, Sports Bars, Restaurants, Bars, American (Traditional), American (New), Burgers, Chicken Wings, Nightlife"
+  },
+  {
+    "name": "Peel Wood Fired Pizza",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Bars, Desserts, Italian, Nightlife, Beer, Wine & Spirits, Food, Pizza, Restaurants"
+  },
+  {
+    "name": "Fletcher's Kitchen and Tap",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "American (Traditional), Restaurants"
+  },
+  {
+    "name": "Aunt Sams Uptown Eatery",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Sandwiches, American (New), Breakfast & Brunch, Burgers"
+  },
+  {
+    "name": "Jimmy John's",
+    "city": "Edwardsville",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Sandwiches, Food, Food Delivery Services, Restaurants, Delis, Fast Food"
+  },
+  {
+    "name": "Applebee's Grill + Bar",
+    "city": "Collinsville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Steakhouses, Nightlife, Sports Bars, Bars, Restaurants, Burgers, American (Traditional), Chicken Wings"
+  },
+  {
+    "name": "Baja Cali",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Mexican, Restaurants"
+  },
+  {
+    "name": "Bottom's Up Sports Bar & Grill",
+    "city": "Alton",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Restaurants, Sports Bars, Burgers, Salad, Nightlife, Bars, Pizza"
+  },
+  {
+    "name": "C And C Food For Your Soul",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 5.0,
+    "categories": "Southern, American (Traditional), Restaurants, Soul Food"
+  },
+  {
+    "name": "Logan's Roadhouse",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.5,
+    "categories": "Steakhouses, Barbeque, American (Traditional), Restaurants"
+  },
+  {
+    "name": "Silver Creek Saloon & Grill",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Music Venues, American (New), Sports Bars, Restaurants, Arts & Entertainment, American (Traditional), Bars, Nightlife"
+  },
+  {
+    "name": "Marco's Express",
+    "city": "Belleville",
+    "state": "IL",
+    "stars": 4.0,
+    "categories": "Pizza, Salad, Italian, Restaurants"
+  },
+  {
+    "name": "St Clair Bowl",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "stars": 3.0,
+    "categories": "Arts & Entertainment, Leisure Centers, Active Life, Party & Event Planning, Event Planning & Services, Sporting Goods, Restaurants, American (New), Arcades, Bowling, Shopping"
+  },
+  {
+    "name": "The Chicago Diner",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Vegetarian, Vegan, American (Traditional)"
+  },
+  {
+    "name": "Lou Malnati's Pizzeria",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.7,
+    "categories": "Restaurants, Pizza, Italian"
+  },
+  {
+    "name": "Portillo's",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.4,
+    "categories": "Restaurants, Fast Food, Hot Dogs, American (Traditional)"
+  },
+  {
+    "name": "Ema",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.6,
+    "categories": "Restaurants, Mediterranean, Vegetarian"
+  },
+  {
+    "name": "Handlebar",
+    "city": "Chicago",
+    "state": "IL",
+    "stars": 4.5,
+    "categories": "Restaurants, Vegetarian, Vegan, Breakfast & Brunch"
+  }
+]

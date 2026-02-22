@@ -21,7 +21,7 @@ from app.services.model_integration import predict_percent_visits_for_date
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
-_geo = Nominatim(user_agent="breathe-forecast")
+_geo = Nominatim(user_agent="purepath-forecast")
 
 
 class ForecastRequest(BaseModel):
