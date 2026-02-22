@@ -3,6 +3,7 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Wind, Map, MessageSquare, ChevronRight, PlusSquare } from "lucide-react";
+import Chatbot from "@/components/Chatbot";
 import { useMemo } from "react";
 
 // Map only runs in browser (Leaflet needs window)
@@ -90,6 +91,10 @@ function useMockAirQualityTimeseries() {
       />
     </div>
   </div>
+
+      <div className="w-full max-w-2xl">
+        <Chatbot />
+      </div>
 
       {/* Screen cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
