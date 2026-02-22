@@ -77,6 +77,37 @@ class OutbreakFeedResponse(BaseModel):
     last_updated: datetime
 
 
+# ── Environmental Forecast ────────────────────────────────────────────────────
+
+class EnvPrediction(BaseModel):
+    """Daily statistics for a single environmental variable."""
+    mean: float
+    min:  float
+    max:  float
+    p25:  Optional[float] = None   # 25th percentile across 24 hourly predictions
+    p75:  Optional[float] = None   # 75th percentile
+
+
+class EnvForecast(BaseModel):
+    """
+    Predicted environmental conditions for a single day.
+    Populated by the forecaster service; included in DayRisk.
+    """
+    source: str               # "api_direct" | "ml_aq_api_weather" | "ml_full" | "error_fallback"
+    days_ahead: int
+    aqi_category: str
+    data_points_used: int = 0
+    temperature_2m:        Optional[EnvPrediction] = None
+    relative_humidity_2m:  Optional[EnvPrediction] = None
+    wind_speed_10m:        Optional[EnvPrediction] = None
+    precipitation:         Optional[EnvPrediction] = None
+    pm2_5:                 Optional[EnvPrediction] = None
+    pm10:                  Optional[EnvPrediction] = None
+    nitrogen_dioxide:      Optional[EnvPrediction] = None
+    ozone:                 Optional[EnvPrediction] = None
+    us_aqi:                Optional[EnvPrediction] = None
+
+
 # ── Itinerary ─────────────────────────────────────────────────────────────────
 
 class Activity(BaseModel):
@@ -105,6 +136,7 @@ class DayRisk(BaseModel):
     weather_summary: str
     activity_adjustments: List[dict]   # {original, suggested, reason}
     morning_briefing: List[str]        # top 3 watch-outs
+    env_forecast: Optional[EnvForecast] = None  # ML-predicted conditions for trip date
 
 
 class ItineraryResponse(BaseModel):

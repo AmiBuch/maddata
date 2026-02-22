@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import conditions, itinerary, chat, outbreaks
+from app.routers import conditions, itinerary, chat, outbreaks, forecast
 from app.config import settings
 
 app = FastAPI(
@@ -21,6 +21,7 @@ app.include_router(conditions.router, prefix="/api/conditions", tags=["condition
 app.include_router(itinerary.router, prefix="/api/itinerary", tags=["itinerary"])
 app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
 app.include_router(outbreaks.router, prefix="/api/outbreaks", tags=["outbreaks"])
+app.include_router(forecast.router,  prefix="/api/forecast",  tags=["forecast"])
 
 
 @app.get("/")
