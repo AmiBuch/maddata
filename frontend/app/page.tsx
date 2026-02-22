@@ -21,7 +21,7 @@ const SCREENS = [
   {
     href: "/itinerary",
     icon: Map,
-    title: "UploadItinerary",
+    title: "Upload Itinerary",
     description: "Upload your travel plans and get a day-by-day health risk forecast.",
     color: "text-violet-400",
     bg: "bg-violet-500/10 border-violet-500/20",
