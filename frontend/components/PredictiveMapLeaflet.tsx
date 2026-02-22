@@ -518,11 +518,72 @@ export default function PredictiveMapLeaflet({
           weight: 2,
         }).addTo(map);
     
-        userMarker.bindPopup("You are here");
+        userMarker.bindPopup("You are here", { autoClose: false, closeOnClick: false })
+        .openPopup();
         userMarkerRef.current = userMarker;
   
     mapRef.current = map;
-  
+    //Button to recenter
+          // --- Recenter Control
+  const RecenterControl = L.Control.extend({
+    options: { position: "topright" },
+
+    onAdd: function () {
+      const container = L.DomUtil.create(
+        "div",
+        "leaflet-bar leaflet-control"
+      );
+
+      container.style.backgroundColor = "#0f172a";
+      container.style.width = "42px";
+      container.style.height = "42px";
+      container.style.fontSize = "18px";
+      container.style.display = "flex";
+      container.style.alignItems = "center";
+      container.style.justifyContent = "center";
+      container.style.cursor = "pointer";
+      container.title = "Recenter to your location";
+
+      container.innerHTML = "📍";
+
+          // --- Create hover label
+      const label = L.DomUtil.create("div", "", container);
+      label.innerText = "Recenter";
+      label.style.position = "absolute";
+      label.style.right = "40px";
+      label.style.top = "50%";
+      label.style.transform = "translateY(-50%)";
+      label.style.background = "#ffffff";
+      label.style.color = "#000000";
+      label.style.padding = "4px 8px";
+      label.style.borderRadius = "6px";
+      label.style.fontSize = "12px";
+      label.style.whiteSpace = "nowrap";
+      label.style.opacity = "0";
+      label.style.pointerEvents = "none";
+      label.style.transition = "opacity 0.2s ease";
+
+      // Show on hover
+      container.onmouseenter = () => {
+        label.style.opacity = "1";
+      };
+
+      container.onmouseleave = () => {
+        label.style.opacity = "0";
+      };
+      
+        L.DomEvent.disableClickPropagation(container);
+
+        container.onclick = () => {
+          if (userLocation) {
+            map.setView(userLocation, map.getZoom(), { animate: true });
+          }
+        };
+        return container;
+      },
+    });
+    map.addControl(new RecenterControl());
+
     // --- User route overlay
     if (routeLine?.geometry?.coordinates?.length) {
       const coords = routeLine.geometry.coordinates.map(([lng, lat]) => [lat, lng]) as [number, number][];
@@ -620,8 +681,8 @@ export default function PredictiveMapLeaflet({
           <div className="flex flex-wrap items-center gap-3">
           {[
             { key: "airQuality", label: "Air Quality", activeClass: "bg-teal-600 text-white" },
-            { key: "outbreak", label: "Outbreak Activity", activeClass: "bg-violet-600 text-white" },
-            { key: "historicalRisk", label: "Historical Risk", activeClass: "bg-amber-500 text-black" },
+            { key: "outbreak", label: "Outbreak Activity", activeClass: "bg-teal-600 text-white" },
+            { key: "historicalRisk", label: "Historical Risk", activeClass: "bg-teal-600 text-white" },
           ].map(({ key, label, activeClass }) => {
             const active = selectedLayer === key;
             return (
