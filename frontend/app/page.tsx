@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Wind, Map, MessageSquare, ChevronRight } from "lucide-react";
+import { Wind, Map, MessageSquare, ChevronRight, PlusSquare } from "lucide-react";
 import { useMemo } from "react";
 
 // Map only runs in browser (Leaflet needs window)
@@ -20,8 +20,8 @@ const SCREENS = [
   {
     href: "/itinerary",
     icon: Map,
-    title: "Upload Itinerary",
-    description: "Paste or upload your travel plan — get a day-by-day personal risk forecast.",
+    title: "UploadItinerary",
+    description: "Upload your travel plans and get a day-by-day health risk forecast.",
     color: "text-violet-400",
     bg: "bg-violet-500/10 border-violet-500/20",
   },
@@ -65,16 +65,17 @@ function useMockAirQualityTimeseries() {
       {/* Hero */}
       <div className="space-y-4 max-w-2xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-sm font-medium mb-2">
-          <Wind size={14} />
-          Health-Aware Travel Intelligence
+          <PlusSquare size={14} />
+          Health-Aware Travel Assistance
         </div>
         <h1 className="text-5xl font-bold tracking-tight">
           Is it safe for you{" "}
           <span className="text-teal-400">to be there?</span>
         </h1>
         <p className="text-slate-400 text-lg leading-relaxed">
-          Real-time AQI, outbreak tracking, and AI-powered itinerary planning —
-          personalized to your health conditions.
+          Know before you go. Real-time health risk tracking, 
+          iternerary assesment, and AI-powered travel planning - personalized to your health conditions.
+
         </p>
       </div>
 

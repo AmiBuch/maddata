@@ -20,7 +20,7 @@ import { useCallback, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import {
     Upload, FileText, AlertTriangle, ChevronDown, ChevronUp,
-    Map, Plus, Trash2, CheckCircle, Loader2, RotateCcw,
+    Map as MapIcon, Plus, Trash2, CheckCircle, Loader2, RotateCcw,
 } from "lucide-react";
 import EnvForecastPanel, { EnvForecast, SourceBadge } from "@/components/EnvForecastPanel";
 import { ActivityPoint, ForecastResult } from "@/components/ItineraryMap";
@@ -312,7 +312,7 @@ async function extractPdfText(file: File): Promise<string> {
 
 // ── Gemini structured extraction ──────────────────────────────────────────────
 // Update the model string once Gemini 3 is available (e.g. "gemini-3-flash")
-const GEMINI_MODEL = "gemini-2.0-flash";
+const GEMINI_MODEL = "gemini-2.5-flash";
 
 const EXTRACTION_PROMPT = `You are a travel itinerary parser. Extract the itinerary from the text below and return ONLY valid JSON — no markdown, no explanation, nothing else.
 
@@ -343,11 +343,13 @@ async function extractWithGemini(text: string): Promise<ParsedItinerary> {
     const key = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!key) throw new Error("NEXT_PUBLIC_GEMINI_API_KEY is not set in .env.local");
 
-    const { GoogleGenerativeAI } = await import("@google/generative-ai");
-    const genAI = new GoogleGenerativeAI(key);
-    const model = genAI.getGenerativeModel({ model: GEMINI_MODEL });
-    const result = await model.generateContent(EXTRACTION_PROMPT + text);
-    const raw = result.response.text().trim();
+    const { GoogleGenAI } = await import("@google/genai");
+    const ai = new GoogleGenAI({ apiKey: key });
+    const result = await ai.models.generateContent({
+        model: GEMINI_MODEL,
+        contents: EXTRACTION_PROMPT + text,
+    });
+    const raw = (result.text ?? "").trim();
 
     // Strip optional markdown code fence
     const jsonStr = raw.replace(/^```(?:json)?\n?/, "").replace(/```$/, "").trim();
@@ -573,7 +575,7 @@ export default function ItineraryPage() {
             {/* Page header */}
             <div>
                 <h1 className="text-2xl font-bold flex items-center gap-2">
-                    <Map className="text-violet-400" size={24} /> Upload Itinerary
+                    <MapIcon className="text-violet-400" size={24} /> Upload Itinerary
                 </h1>
                 <p className="text-slate-400 text-sm mt-1">
                     Upload a PDF travel plan — Gemini extracts it, our ML model predicts the air quality.
