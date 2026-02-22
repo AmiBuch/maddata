@@ -242,21 +242,28 @@ export default function ItineraryMap({ activities, forecast }: Props) {
     const p75Val  = preds?.[predKey]?.p75 ?? preds?.[predKey]?.mean ?? 0;
     const intensity = normalize(p75Val, cfg.max);
 
-    // Build heatmap points — one per activity location
-    const heatPoints: [number, number, number][] = activities.map((a) => [
-      a.lat + (Math.random() - 0.5) * 0.003, // tiny jitter so overlapping stops show separately
-      a.lon + (Math.random() - 0.5) * 0.003,
-      intensity,
-    ]);
+    // Per-activity intensity: use riskScore (0–100) when available so high-risk
+    // stops glow brighter than low-risk ones; fall back to the forecast intensity.
+    const maxScore = Math.max(...activities.map(a => a.riskScore ?? 0), 1);
+    const heatPoints: [number, number, number][] = activities.map((a) => {
+      const perPoint = a.riskScore !== undefined
+        ? Math.min((a.riskScore / maxScore) * 1.1, 1.0)  // per-activity, slightly boosted
+        : intensity;
+      return [
+        a.lat + (Math.random() - 0.5) * 0.003,
+        a.lon + (Math.random() - 0.5) * 0.003,
+        perPoint,
+      ];
+    });
 
     // L.heatLayer is injected by the CDN script
     const LWithHeat = L as unknown as {
       heatLayer: (points: [number, number, number][], opts: object) => L.Layer;
     };
     heatLayerRef.current = LWithHeat.heatLayer(heatPoints, {
-      radius:  50,
-      blur:    35,
-      maxZoom: 17,
+      radius:  45,
+      blur:    18,   // tighter than original (35) → darker, more concentrated blobs
+      maxZoom: 16,
       max:     1.0,
       gradient: { 0.0: "#22c55e", 0.4: "#eab308", 0.7: "#f97316", 1.0: "#ef4444" },
     }).addTo(map);
