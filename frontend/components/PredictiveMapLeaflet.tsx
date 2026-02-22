@@ -315,7 +315,7 @@ export default function PredictiveMapLeaflet({
   const historicalRiskGroupRef = useRef<L.LayerGroup | null>(null);
   const intersectionGroupRef = useRef<L.LayerGroup | null>(null);
   const initializedRef = useRef(false);
-
+  const boundsAppliedRef = useRef(false);
   // Single-selection: only one predictive layer visible at a time. Default = Air Quality.
   const [selectedLayer, setSelectedLayer] = useState<PredictiveLayerKey>("airQuality");
 
@@ -323,6 +323,8 @@ export default function PredictiveMapLeaflet({
   const [aqiTimeIndex, setAqiTimeIndex] = useState(0);
   const [aqiPlaying, setAqiPlaying] = useState(false);
   const playIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(null); //for users active location marker
+  const userMarkerRef = useRef<L.CircleMarker | null>(null);
 
   const routeData = userRouteGeoJSON ?? getMockRoute();
   const routeLine = routeToLineString(routeData);
@@ -347,22 +349,27 @@ export default function PredictiveMapLeaflet({
     const fc = aqiData;
     if (!fc?.features) return;
 
+    const aqiValues = fc.features.map(
+      (f) => Number((f.properties as any)?.aqi ?? 0)
+    );
+    const maxAqi = Math.max(...aqiValues, 50);  
+
     const heatPoints: [number, number, number][] = fc.features
     .filter(f => f.geometry?.type === 'Point')
     .map(f => {
       // TS assertion: coordinates is [lng, lat]
       const coords = f.geometry!.coordinates as [number, number];
       const [lng, lat] = coords;
-      const aqi = Number((f.properties as Record<string, unknown>)?.aqi ?? 50);
-      const intensity = Math.min(aqi / 150, 1); // normalize to 0–1
+      const aqi = Number((f.properties as any)?.aqi ?? 0);
+      const intensity = Math.min((aqi / maxAqi) * 1.2, 1.2);
       return [lat, lng, intensity];
     });
   
     if (!heatPoints.length) return;
   
     const heatLayer = (L as any).heatLayer(heatPoints, {
-      radius: 25,
-      blur: 15,
+      radius: 30,
+      blur: 10,
       maxZoom: 16,
       gradient: {
         0.0: '#22c55e', // green → AQI good
@@ -473,61 +480,68 @@ export default function PredictiveMapLeaflet({
     setAqiTimeIndex((i) => (i + 1) % airQualityFrames.length);
   }, [airQualityFrames.length]);
 
+  //Initialize location 
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      console.warn("Geolocation not supported, using default location.");
+      setUserLocation(center);
+      return;
+    }
+  
+    navigator.geolocation.watchPosition(
+      (pos) => {
+        setUserLocation([pos.coords.latitude, pos.coords.longitude]);
+      },
+      (err) => console.warn(err),
+      { enableHighAccuracy: true }
+    );
+  }, []);
+
   // Initialize map and LayerGroups once
   useEffect(() => {
-    if (!mapContainerRef.current || initializedRef.current) return;
-    initializedRef.current = true;
-
-    const map = L.map(mapContainerRef.current, {
-      center,
-      zoom: initialZoom,
-    });
-
+    if (!mapContainerRef.current || initializedRef.current || !userLocation) return;
+  
+    const map = L.map(mapContainerRef.current, { center: userLocation, zoom: initialZoom });
+  
     L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
       attribution: "© OpenStreetMap © CARTO",
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
 
-    //map.addControl(L.control.zoom({ position: "topright" })); -> added second zoom to the right
-
-    // --- User route overlay: always visible (not in any toggle)
+        // Add user location marker
+        const userMarker = L.circleMarker(userLocation, {
+          radius: 8,
+          fillColor: "#14b8a6",
+          fillOpacity: 1,
+          color: "#ffffff",
+          weight: 2,
+        }).addTo(map);
+    
+        userMarker.bindPopup("You are here");
+        userMarkerRef.current = userMarker;
+  
+    mapRef.current = map;
+  
+    // --- User route overlay
     if (routeLine?.geometry?.coordinates?.length) {
-      const coords = routeLine.geometry.coordinates.map(([lng, lat]) => [
-        lat,
-        lng,
-      ]) as [number, number][];
+      const coords = routeLine.geometry.coordinates.map(([lng, lat]) => [lat, lng]) as [number, number][];
       const intersectsHigh = routeIntersectsHighRisk(routeLine, historicalRiskData);
       const routeLayer = L.polyline(coords, {
         color: intersectsHigh ? "#ef4444" : "#818cf8",
         weight: 4,
         opacity: 0.9,
-      });
-      routeLayer.addTo(map);
+      }).addTo(map);
       routeLayerRef.current = routeLayer;
     }
-
-    // --- LayerGroups for predictive layers (initially not added to map; we add only the selected one)
-    const airQualityGroup = L.layerGroup();
-    const outbreakGroup = L.layerGroup();
-    const historicalRiskGroup = L.layerGroup();
-    const intersectionGroup = L.layerGroup();
-
-    airQualityGroupRef.current = airQualityGroup;
-    outbreakGroupRef.current = outbreakGroup;
-    historicalRiskGroupRef.current = historicalRiskGroup;
-    intersectionGroupRef.current = intersectionGroup;
-
-    mapRef.current = map;
-
+  
+    // --- LayerGroups
+    airQualityGroupRef.current = L.layerGroup();
+    outbreakGroupRef.current = L.layerGroup();
+    historicalRiskGroupRef.current = L.layerGroup();
+    intersectionGroupRef.current = L.layerGroup();
+  
     return () => {
-      [airQualityGroup, outbreakGroup, historicalRiskGroup, intersectionGroup].forEach(
-        (g) => {
-          if (map.hasLayer(g)) map.removeLayer(g);
-        }
-      );
-      if (routeLayerRef.current && map.hasLayer(routeLayerRef.current))
-        map.removeLayer(routeLayerRef.current);
       map.remove();
       mapRef.current = null;
       routeLayerRef.current = null;
@@ -537,7 +551,7 @@ export default function PredictiveMapLeaflet({
       intersectionGroupRef.current = null;
       initializedRef.current = false;
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [userLocation]); // <-- wait for actual user location
 
   // Populate LayerGroups and apply visibility when data or selection changes
   useEffect(() => {
@@ -585,13 +599,19 @@ export default function PredictiveMapLeaflet({
   // Fit bounds to route when map is ready
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !routeLine?.geometry?.coordinates?.length) return;
-    const coords = routeLine.geometry.coordinates;
-    const bounds = L.latLngBounds(
-      coords.map(([lng, lat]) => [lat, lng] as [number, number])
-    );
-    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
-  }, [routeLine]);
+  if (!map || !routeLine?.geometry?.coordinates?.length) return;
+
+  // Only fit bounds once on initial load
+  if (boundsAppliedRef.current) return;
+
+  const coords = routeLine.geometry.coordinates;
+  const bounds = L.latLngBounds(
+    coords.map(([lng, lat]) => [lat, lng] as [number, number])
+  );
+  map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+
+  boundsAppliedRef.current = true; // mark that we've applied bounds
+}, [routeLine]);
 
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
