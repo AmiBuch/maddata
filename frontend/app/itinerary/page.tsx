@@ -173,11 +173,15 @@ function computeRisk(
 
     let betterTime: string | undefined;
     if (schedHour !== undefined && hourly.length > 0) {
-        const valid = hourly.filter(h => h.us_aqi !== undefined);
+        const valid = hourly.filter(h =>
+            h.us_aqi !== undefined
+            && h.hour >= SUGGESTION_START_HOUR
+            && h.hour <= SUGGESTION_END_HOUR
+        );
         if (valid.length > 0) {
             const best = valid.reduce((a, b) => (a.us_aqi < b.us_aqi ? a : b));
             const schedAqi = hourly.find(h => h.hour === schedHour)?.us_aqi ?? aqi;
-            if (best.us_aqi < schedAqi * 0.8 && best.hour !== schedHour) {
+            if (best.us_aqi < schedAqi * 0.9 && best.hour !== schedHour) {
                 betterTime = `Better air at ${String(best.hour).padStart(2, "0")}:00 (AQI ${best.us_aqi.toFixed(0)} vs ${schedAqi.toFixed(0)} scheduled)`;
             }
         }
@@ -227,6 +231,9 @@ const TIER_BG: Record<string, string> = {
     "Very High": "border-red-500/20",
 };
 
+const SUGGESTION_START_HOUR = 8;
+const SUGGESTION_END_HOUR = 20;
+
 function respiratoryRiskLabel(risk: number): "Low" | "Medium" | "High" {
     if (risk < 4) return "Low";
     if (risk <= 8) return "Medium";
@@ -240,7 +247,11 @@ function respiratoryRiskColor(label: "Low" | "Medium" | "High"): string {
 }
 
 function bestOutdoorWindow(hourly: ForecastResult["hourly_breakdown"]): { hour: number; aqi: number } | null {
-    const valid = hourly.filter(h => typeof h.us_aqi === "number");
+    const valid = hourly.filter(h =>
+        typeof h.us_aqi === "number"
+        && h.hour >= SUGGESTION_START_HOUR
+        && h.hour <= SUGGESTION_END_HOUR
+    );
     if (valid.length === 0) return null;
     const best = valid.reduce((a, b) => (a.us_aqi < b.us_aqi ? a : b));
     return { hour: best.hour, aqi: best.us_aqi };
