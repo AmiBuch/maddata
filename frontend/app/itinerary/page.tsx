@@ -69,6 +69,7 @@ interface DayResult {
     visits?: {
         respiratory_risk_percent?: number;
     };
+    daySuggestion?: string;
     activities: RichActivity[];
     overallTier: string;
     overallScore: number;
@@ -98,6 +99,17 @@ const CONDITION_WEIGHTS: Record<string, { aqi: number; humidity: number; heat: n
 
 type PredMap = ForecastResult["predictions"];
 
+function hourlyValue(
+    hourly: ForecastResult["hourly_breakdown"],
+    hour: number | undefined,
+    key: string,
+): number | undefined {
+    if (hour === undefined) return undefined;
+    const entry = hourly.find(h => h.hour === hour);
+    const raw = entry?.[key as keyof typeof entry];
+    return typeof raw === "number" ? raw : undefined;
+}
+
 function computeRisk(
     preds: PredMap,
     hourly: ForecastResult["hourly_breakdown"],
@@ -110,12 +122,16 @@ function computeRisk(
         return p?.p75 ?? p?.mean ?? 0;
     };
 
-    const aqi = p75("us_aqi");
+    // Temperature and humidity stay daily (p75); AQ uses time-specific values when available.
     const tempC = p75("temperature_2m");
     const tempF = tempC * 9 / 5 + 32;
     const hum = p75("relative_humidity_2m");
-    const pm25 = p75("pm2_5");
-    const o3 = p75("ozone");
+
+    const aqi = hourlyValue(hourly, schedHour, "us_aqi") ?? p75("us_aqi");
+    const pm25 = hourlyValue(hourly, schedHour, "pm2_5") ?? p75("pm2_5");
+    const pm10 = hourlyValue(hourly, schedHour, "pm10") ?? p75("pm10");
+    const no2 = hourlyValue(hourly, schedHour, "nitrogen_dioxide") ?? p75("nitrogen_dioxide");
+    const o3 = hourlyValue(hourly, schedHour, "ozone") ?? p75("ozone");
 
     const isOutdoor = ["outdoor", "hiking"].includes(actType);
     const aqiExposure = isOutdoor ? 1.0 : 0.6;
@@ -147,6 +163,8 @@ function computeRisk(
     if (aqi > 150) flags.push(`AQI ${aqi.toFixed(0)} — hazardous for outdoor activity`);
     else if (aqi > 100 && isOutdoor) flags.push(`AQI ${aqi.toFixed(0)} — limit strenuous outdoor exertion`);
     if (pm25 > 35) flags.push(`PM2.5 ${pm25.toFixed(1)} µg/m³ — elevated fine particles`);
+    if (pm10 > 50) flags.push(`PM10 ${pm10.toFixed(1)} µg/m³ — coarse particles elevated`);
+    if (no2 > 100) flags.push(`NO₂ ${no2.toFixed(0)} µg/m³ — nitrogen dioxide elevated`);
     if (o3 > 70 && conds.some(c => ["asthma", "copd", "allergies"].includes(c.toLowerCase()))) {
         flags.push(`O₃ ${o3.toFixed(1)} µg/m³ — ozone elevated, respiratory risk`);
     }
@@ -219,6 +237,33 @@ function respiratoryRiskColor(label: "Low" | "Medium" | "High"): string {
     if (label === "Low") return "text-green-400";
     if (label === "Medium") return "text-yellow-400";
     return "text-red-400";
+}
+
+function bestOutdoorWindow(hourly: ForecastResult["hourly_breakdown"]): { hour: number; aqi: number } | null {
+    const valid = hourly.filter(h => typeof h.us_aqi === "number");
+    if (valid.length === 0) return null;
+    const best = valid.reduce((a, b) => (a.us_aqi < b.us_aqi ? a : b));
+    return { hour: best.hour, aqi: best.us_aqi };
+}
+
+function buildDaySuggestion(
+    forecast: ForecastResult,
+    conds: string[],
+): string | undefined {
+    const best = bestOutdoorWindow(forecast.hourly_breakdown);
+    if (!best) return undefined;
+
+    const sensitive = conds.some(c => ["asthma", "copd", "allergies"].includes(c.toLowerCase()));
+    const hourLabel = `${String(best.hour).padStart(2, "0")}:00`;
+    if (best.aqi <= 50) {
+        return `Best outdoor window around ${hourLabel} (AQI ${best.aqi.toFixed(0)}).`;
+    }
+    if (best.aqi <= 100) {
+        return `Outdoor OK around ${hourLabel} (AQI ${best.aqi.toFixed(0)}). Keep activity moderate.`;
+    }
+    return sensitive
+        ? `Air quality elevated all day. Prefer indoor spots; if you go out, keep it brief around ${hourLabel} (AQI ${best.aqi.toFixed(0)}).`
+        : `Air quality elevated. Prefer indoor venues; if you go out, try around ${hourLabel} (AQI ${best.aqi.toFixed(0)}).`;
 }
 
 // ── Nominatim geocoding with simple in-memory cache ──────────────────────────
@@ -496,12 +541,14 @@ export default function ItineraryPage() {
 
                 const overallTier = worseTier(richActivities.map(a => a.riskTier));
                 const overallScore = Math.max(...richActivities.map(a => a.riskScore), 0);
+                const daySuggestion = buildDaySuggestion(forecast, conditions);
 
                 dayResults.push({
                     date: day.date,
                     city: day.city,
                     forecast,
                     visits,
+                    daySuggestion,
                     activities: richActivities,
                     overallTier,
                     overallScore,
@@ -764,6 +811,11 @@ export default function ItineraryPage() {
                                                 ) : <div className="text-xs text-slate-500">Model not available — showing environmental forecast only.</div>}
                                             </div>
                                         )}
+                                        {day.daySuggestion && (
+                                            <div className="px-3 py-2 text-sm text-emerald-300 border-b border-slate-800/40">
+                                                {day.daySuggestion}
+                                            </div>
+                                        )}
                                         {/* Map — shows route + heatmap */}
                                         <ItineraryMap
                                             activities={day.activities.map((a, idx) => ({
@@ -861,8 +913,8 @@ function ConditionChips({
                         key={c}
                         onClick={() => onToggle(c)}
                         className={`px-3 py-1 rounded-full text-sm border transition-colors ${selected.includes(c)
-                                ? "bg-teal-600 border-teal-500 text-white"
-                                : "bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-500"
+                            ? "bg-teal-600 border-teal-500 text-white"
+                            : "bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-500"
                             }`}
                     >
                         {c}
