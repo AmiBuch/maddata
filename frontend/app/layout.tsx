@@ -3,8 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Breathe — Health-Aware Travel",
-  description: "Know before you go. Real-time health risk intelligence for every trip.",
+  title: "Health-Aware Travel Assistance",
+  description: "Know before you go. Real-time health risk analysis for your next trip.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

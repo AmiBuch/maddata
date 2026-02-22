@@ -17,6 +17,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import L from "leaflet";
+import "leaflet.heat";
 import "leaflet/dist/leaflet.css";
 import * as turf from "@turf/turf";
 
@@ -345,21 +346,33 @@ export default function PredictiveMapLeaflet({
     group.clearLayers();
     const fc = aqiData;
     if (!fc?.features) return;
-    fc.features.forEach((f) => {
-      if (f.geometry?.type !== "Point") return;
-      const [lng, lat] = f.geometry.coordinates;
+
+    const heatPoints: [number, number, number][] = fc.features
+    .filter(f => f.geometry?.type === 'Point')
+    .map(f => {
+      // TS assertion: coordinates is [lng, lat]
+      const coords = f.geometry!.coordinates as [number, number];
+      const [lng, lat] = coords;
       const aqi = Number((f.properties as Record<string, unknown>)?.aqi ?? 50);
-      const radius = 8 + (aqi / 150) * 14;
-      const marker = L.circleMarker([lat, lng], {
-        radius,
-        fillColor: aqiToColor(aqi),
-        fillOpacity: 0.65,
-        color: "#fff",
-        weight: 1,
-      });
-      marker.bindPopup(`AQI: ${Math.round(aqi)}`);
-      group.addLayer(marker);
+      const intensity = Math.min(aqi / 150, 1); // normalize to 0–1
+      return [lat, lng, intensity];
     });
+  
+    if (!heatPoints.length) return;
+  
+    const heatLayer = (L as any).heatLayer(heatPoints, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 16,
+      gradient: {
+        0.0: '#22c55e', // green → AQI good
+        0.4: '#facc15', // yellow → AQI moderate
+        0.7: '#f97316', // orange → AQI unhealthy for sensitive
+        1.0: '#dc2626', // red → AQI bad
+      },
+    });
+  
+    group.addLayer(heatLayer);
   }, [aqiData]);
 
   // Build Outbreak LayerGroup
