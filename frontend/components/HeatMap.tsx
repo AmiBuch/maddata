@@ -10,24 +10,28 @@ import "leaflet/dist/leaflet.css";
 
 interface HeatMapProps {
   center: [number, number];
-  riskScore: number;         // 0–100 for color intensity
+  riskScore: number;         // 0-100 for color intensity
+  aqi?: number;              // actual AQI value for realistic coloring
   route?: [number, number][]; // optional planned route polyline
 }
 
-// Generate fake heatmap cells around center for demo
-function generateHeatCells(center: [number, number], score: number) {
+/** Generate heatmap cells around center using actual AQI for realistic visualization. */
+function generateHeatCells(center: [number, number], aqi: number, riskScore: number) {
   const cells: [number, number, number][] = []; // [lat, lon, intensity]
   const spread = 0.05;
-  for (let i = 0; i < 40; i++) {
+  // Normalize AQI to 0-1 intensity (AQI 0=green, 200+=red)
+  const baseIntensity = aqi > 0 ? Math.min(aqi / 200, 1) : riskScore / 100;
+  for (let i = 0; i < 50; i++) {
     const lat = center[0] + (Math.random() - 0.5) * spread * 2;
     const lon = center[1] + (Math.random() - 0.5) * spread * 2;
-    const intensity = (score / 100) * (0.4 + Math.random() * 0.6);
+    // Vary intensity +/- 30% around the real AQI-based value
+    const intensity = Math.max(0.05, baseIntensity * (0.7 + Math.random() * 0.6));
     cells.push([lat, lon, intensity]);
   }
   return cells;
 }
 
-export default function HeatMap({ center, riskScore, route }: HeatMapProps) {
+export default function HeatMap({ center, riskScore, aqi, route }: HeatMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 
@@ -40,16 +44,16 @@ export default function HeatMap({ center, riskScore, route }: HeatMapProps) {
       zoomControl: true,
     });
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: "© OpenStreetMap © CARTO",
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: "\u00a9 OpenStreetMap \u00a9 CARTO",
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
 
-    // Color-coded circle markers as heatmap proxy (leaflet.heat not in npm)
-    const cells = generateHeatCells(center, riskScore);
+    // Color-coded circle markers as heatmap proxy
+    const cells = generateHeatCells(center, aqi ?? 0, riskScore);
     cells.forEach(([lat, lon, intensity]) => {
-      const hue = Math.round((1 - intensity) * 120); // green → red
+      const hue = Math.round((1 - intensity) * 120); // green -> red
       L.circleMarker([lat, lon], {
         radius: 18,
         fillColor: `hsl(${hue}, 80%, 50%)`,
@@ -62,7 +66,7 @@ export default function HeatMap({ center, riskScore, route }: HeatMapProps) {
     // User location marker
     L.circleMarker(center, {
       radius: 8,
-      fillColor: "#14b8a6",
+      fillColor: "#6a8ce8",
       fillOpacity: 1,
       color: "#fff",
       weight: 2,

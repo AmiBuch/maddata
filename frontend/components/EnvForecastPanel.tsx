@@ -2,7 +2,7 @@
 
 import { Activity } from "lucide-react";
 
-// ── Shared types (re-exported for consumers) ──────────────────────────────────
+// -- Shared types (re-exported for consumers) --
 export interface EnvPrediction {
   mean: number;
   min:  number;
@@ -12,7 +12,7 @@ export interface EnvPrediction {
 }
 
 export interface EnvForecast {
-  source: string;           // "api_direct" | "ml_aq_api_weather" | "ml_full" | "error_fallback"
+  source: string;
   days_ahead: number;
   aqi_category: string;
   data_points_used: number;
@@ -27,16 +27,16 @@ export interface EnvForecast {
   us_aqi?:               EnvPrediction;
 }
 
-// ── Source badge ──────────────────────────────────────────────────────────────
+// -- Source badge --
 export const SOURCE_META: Record<string, { label: string; color: string }> = {
-  api_direct:        { label: "Live Forecast",      color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
-  ml_aq_api_weather: { label: "Hybrid Forecast",    color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
-  ml_full:           { label: "Historical Pattern", color: "bg-violet-500/20 text-violet-400 border-violet-500/30" },
-  error_fallback:    { label: "Current Conditions", color: "bg-slate-600/40 text-slate-400 border-slate-600/30" },
+  api_direct:        { label: "Live Forecast",      color: "bg-green-50 text-green-600 border-green-200" },
+  ml_aq_api_weather: { label: "Hybrid Forecast",    color: "bg-blue-50 text-blue-600 border-blue-200" },
+  ml_full:           { label: "Historical Pattern", color: "bg-purple-50 text-accent border-purple-200" },
+  error_fallback:    { label: "Current Conditions", color: "bg-slate-100 text-muted border-slate-200" },
 };
 
 export function SourceBadge({ source }: { source: string }) {
-  const meta = SOURCE_META[source] ?? { label: source, color: "bg-slate-600/40 text-slate-400 border-slate-600/30" };
+  const meta = SOURCE_META[source] ?? { label: source, color: "bg-slate-100 text-muted border-slate-200" };
   return (
     <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${meta.color}`}>
       {meta.label}
@@ -44,14 +44,14 @@ export function SourceBadge({ source }: { source: string }) {
   );
 }
 
-// ── Metric card with IQR range bar ────────────────────────────────────────────
+// -- Metric card with IQR range bar --
 interface MetricCardProps {
   label:     string;
   value:     string;
   unit:      string;
   sub?:      string;
   highlight?: boolean;
-  pred?:     EnvPrediction;   // if provided, renders the IQR bar
+  pred?:     EnvPrediction;
 }
 
 function MetricCard({ label, value, unit, sub, highlight, pred }: MetricCardProps) {
@@ -65,19 +65,19 @@ function MetricCard({ label, value, unit, sub, highlight, pred }: MetricCardProp
   const barWidth = canBar ? Math.max(4, Math.round(((pred!.p75! - pred!.p25!) / (pred!.max - pred!.min)) * 100)) : 0;
 
   return (
-    <div className={`rounded-lg px-3 py-2 ${highlight ? "bg-teal-900/30 border border-teal-700/30" : "bg-slate-800/60"}`}>
-      <div className="text-xs text-slate-500 mb-0.5">{label}</div>
-      <div className="text-sm font-semibold text-slate-200">
+    <div className={`rounded-lg px-3 py-2 ${highlight ? "bg-blue-50 border border-blue-200" : "bg-slate-50"}`}>
+      <div className="text-xs text-muted mb-0.5">{label}</div>
+      <div className="text-sm font-semibold text-heading">
         {value}
-        <span className="text-xs text-slate-400 ml-0.5">{unit}</span>
+        <span className="text-xs text-muted ml-0.5">{unit}</span>
       </div>
-      {sub && <div className="text-xs text-slate-500 truncate mt-0.5">{sub}</div>}
+      {sub && <div className="text-xs text-muted truncate mt-0.5">{sub}</div>}
 
-      {/* IQR range bar — shows the interquartile spread */}
+      {/* IQR range bar */}
       {canBar && (
-        <div className="mt-1.5 h-1 bg-slate-700 rounded-full overflow-hidden relative" title={`IQR: ${pred!.p25!.toFixed(1)}–${pred!.p75!.toFixed(1)}`}>
+        <div className="mt-1.5 h-1 bg-slate-200 rounded-full overflow-hidden relative" title={`IQR: ${pred!.p25!.toFixed(1)}–${pred!.p75!.toFixed(1)}`}>
           <div
-            className={`absolute h-full rounded-full ${highlight ? "bg-teal-400/70" : "bg-violet-400/70"}`}
+            className={`absolute h-full rounded-full ${highlight ? "bg-primary/70" : "bg-accent/70"}`}
             style={{ left: `${barLeft}%`, width: `${barWidth}%` }}
           />
         </div>
@@ -86,10 +86,10 @@ function MetricCard({ label, value, unit, sub, highlight, pred }: MetricCardProp
   );
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// -- Helpers --
 export const cToF = (c: number) => Math.round(c * 9 / 5 + 32);
 
-// ── Main component ────────────────────────────────────────────────────────────
+// -- Main component --
 interface Props {
   ef: EnvForecast;
 }
@@ -109,17 +109,17 @@ export default function EnvForecastPanel({ ef }: Props) {
     <div>
       <div className="flex items-center gap-2 mb-2 flex-wrap">
         <div className="flex items-center gap-1.5">
-          <Activity size={14} className="text-teal-400" />
-          <h4 className="text-sm font-semibold text-teal-400">Predicted Conditions</h4>
+          <Activity size={14} className="text-primary" />
+          <h4 className="text-sm font-semibold text-primary">Predicted Conditions</h4>
         </div>
         <SourceBadge source={p.source} />
         {p.data_points_used > 0 && (
-          <span className="text-xs text-slate-600">({p.data_points_used.toLocaleString()} pts)</span>
+          <span className="text-xs text-muted">({p.data_points_used.toLocaleString()} pts)</span>
         )}
       </div>
 
       {highVariability && (
-        <div className="mb-2 text-xs text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded px-2 py-1">
+        <div className="mb-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1">
           AQI swings significantly today ({p.us_aqi!.min.toFixed(0)}–{p.us_aqi!.max.toFixed(0)}) — check closer to your activity time.
         </div>
       )}
@@ -177,7 +177,7 @@ export default function EnvForecastPanel({ ef }: Props) {
       </div>
 
       {p.source === "ml_full" && (
-        <p className="text-xs text-slate-600 mt-2">
+        <p className="text-xs text-muted mt-2">
           Trip is {p.days_ahead}+ days out — based on seasonal patterns from the past 90 days.
         </p>
       )}

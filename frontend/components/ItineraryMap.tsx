@@ -156,9 +156,9 @@ export default function ItineraryMap({ activities, forecast }: Props) {
     const map = L.map(mapContainerRef.current, { zoomControl: true });
     mapInstanceRef.current = map;
 
-    // Dark tile layer (matches app's slate theme)
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: "© OpenStreetMap © CARTO",
+    // Light tile layer
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: "\u00a9 OpenStreetMap \u00a9 CARTO",
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
@@ -276,15 +276,15 @@ export default function ItineraryMap({ activities, forecast }: Props) {
       <div ref={mapContainerRef} className="absolute inset-0" />
 
       {/* Metric toggle — floating top-right, z-index above Leaflet controls */}
-      <div className="absolute top-3 right-3 z-[1000] flex gap-1 bg-slate-900/85 backdrop-blur rounded-lg p-1 border border-slate-700/50">
+      <div className="absolute top-3 right-3 z-[1000] flex gap-1 bg-white/90 backdrop-blur rounded-lg p-1 border border-slate-200 shadow-sm">
         {(Object.keys(METRIC_CONFIG) as MetricKey[]).map((m) => (
           <button
             key={m}
             onClick={() => setActiveMetric(m)}
             className={`px-2 py-0.5 rounded text-xs font-medium transition-colors ${
               activeMetric === m
-                ? "bg-teal-600 text-white"
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-primary text-white"
+                : "text-muted hover:text-heading"
             }`}
           >
             {METRIC_CONFIG[m].label}
@@ -294,7 +294,7 @@ export default function ItineraryMap({ activities, forecast }: Props) {
 
       {/* Heat plugin loading indicator */}
       {!heatReady && (
-        <div className="absolute bottom-3 left-3 z-[1000] text-xs text-slate-500 bg-slate-900/80 px-2 py-1 rounded">
+        <div className="absolute bottom-3 left-3 z-[1000] text-xs text-muted bg-white/80 px-2 py-1 rounded border border-slate-200">
           Loading heatmap…
         </div>
       )}

@@ -55,7 +55,7 @@ export default function NowPage() {
   useEffect(() => { geolocate(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const aqiColor = (aqi: number) =>
-    aqi <= 50 ? "text-green-400" : aqi <= 100 ? "text-yellow-400" : aqi <= 150 ? "text-orange-400" : "text-red-400";
+    aqi <= 50 ? "text-green-600" : aqi <= 100 ? "text-yellow-600" : aqi <= 150 ? "text-orange-600" : "text-red-600";
 
   return (
     <div className="space-y-6">
@@ -63,9 +63,9 @@ export default function NowPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Wind className="text-teal-400" size={24} /> Right Now
+            <Wind className="text-primary" size={24} /> Right Now
           </h1>
-          <p className="text-slate-400 text-sm mt-1">Live health conditions at your location</p>
+          <p className="text-muted text-sm mt-1">Live health conditions at your location</p>
         </div>
         <div className="flex gap-2">
           <HealthProfileSelector selected={conditions} onChange={setConditions} />
@@ -77,7 +77,7 @@ export default function NowPage() {
       </div>
 
       {error && (
-        <div className="card border-red-500/20 bg-red-500/10 flex items-center gap-3 text-red-400">
+        <div className="card border-red-200 bg-red-50 flex items-center gap-3 text-red-600">
           <AlertTriangle size={18} />
           {error}
         </div>
@@ -86,7 +86,7 @@ export default function NowPage() {
       {loading && !data && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="card animate-pulse bg-slate-800 h-36" />
+            <div key={i} className="card animate-pulse bg-slate-100 h-36" />
           ))}
         </div>
       )}
@@ -97,8 +97,8 @@ export default function NowPage() {
           <div className="card flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <MapPin size={14} className="text-slate-400" />
-                <span className="text-slate-400 text-sm">{data.location.city || `${data.location.lat.toFixed(2)}, ${data.location.lon.toFixed(2)}`}</span>
+                <MapPin size={14} className="text-muted" />
+                <span className="text-muted text-sm">{data.location.city || `${data.location.lat.toFixed(2)}, ${data.location.lon.toFixed(2)}`}</span>
               </div>
               <div className="flex items-center gap-3 mb-3">
                 <h2 className="text-xl font-semibold">Overall Risk</h2>
@@ -106,16 +106,16 @@ export default function NowPage() {
               </div>
               <ul className="space-y-1">
                 {data.risk.factors.map((f, i) => (
-                  <li key={i} className="text-sm text-slate-400 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
+                  <li key={i} className="text-sm text-muted flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                     {f}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="text-right hidden sm:block">
-              <div className="text-6xl font-bold text-teal-400">{data.risk.score}</div>
-              <div className="text-slate-500 text-sm">/ 100</div>
+              <div className="text-6xl font-bold text-primary">{data.risk.score}</div>
+              <div className="text-muted text-sm">/ 100</div>
             </div>
           </div>
 
@@ -123,43 +123,43 @@ export default function NowPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* AQI */}
             <div className="card space-y-2">
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <div className="flex items-center gap-2 text-muted text-sm">
                 <Wind size={14} /> Air Quality
               </div>
               <div className={`text-4xl font-bold ${aqiColor(data.aqi.aqi)}`}>{data.aqi.aqi}</div>
-              <div className="text-slate-400 text-sm">{data.aqi.category}</div>
-              {data.aqi.pm25 && <div className="text-xs text-slate-500">PM2.5: {data.aqi.pm25} · Ozone: {data.aqi.ozone ?? "—"}</div>}
+              <div className="text-muted text-sm">{data.aqi.category}</div>
+              {data.aqi.pm25 && <div className="text-xs text-muted">PM2.5: {data.aqi.pm25} · Ozone: {data.aqi.ozone ?? "—"}</div>}
             </div>
 
             {/* Temperature */}
             <div className="card space-y-2">
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <div className="flex items-center gap-2 text-muted text-sm">
                 <Thermometer size={14} /> Temperature
               </div>
-              <div className="text-4xl font-bold text-sky-400">{data.weather.temp_f}°F</div>
-              <div className="text-slate-400 text-sm">{data.weather.description}</div>
-              <div className="text-xs text-slate-500">Feels like {data.weather.feels_like_f}°F · UV {data.weather.uv_index ?? "—"}</div>
+              <div className="text-4xl font-bold text-secondary">{data.weather.temp_f}°F</div>
+              <div className="text-muted text-sm">{data.weather.description}</div>
+              <div className="text-xs text-muted">Feels like {data.weather.feels_like_f}°F · UV {data.weather.uv_index ?? "—"}</div>
             </div>
 
             {/* Humidity */}
             <div className="card space-y-2">
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <div className="flex items-center gap-2 text-muted text-sm">
                 <Droplets size={14} /> Humidity
               </div>
-              <div className="text-4xl font-bold text-violet-400">{data.weather.humidity}%</div>
-              <div className="text-slate-400 text-sm">Wind: {data.weather.wind_mph ?? "—"} mph</div>
-              <div className="text-xs text-slate-500">High humidity can worsen respiratory symptoms</div>
+              <div className="text-4xl font-bold text-accent">{data.weather.humidity}%</div>
+              <div className="text-muted text-sm">Wind: {data.weather.wind_mph ?? "—"} mph</div>
+              <div className="text-xs text-muted">High humidity can worsen respiratory symptoms</div>
             </div>
           </div>
 
           {/* Recommendations */}
           {data.risk.recommendations.length > 0 && (
-            <div className="card border-teal-500/20">
-              <h3 className="font-semibold mb-3 text-teal-400">Recommendations</h3>
+            <div className="card border-primary/20">
+              <h3 className="font-semibold mb-3 text-primary">Recommendations</h3>
               <ul className="space-y-2">
                 {data.risk.recommendations.map((r, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
-                    <span className="text-teal-400 mt-0.5">→</span> {r}
+                  <li key={i} className="flex items-start gap-2 text-sm text-body">
+                    <span className="text-primary mt-0.5">→</span> {r}
                   </li>
                 ))}
               </ul>
@@ -174,6 +174,7 @@ export default function NowPage() {
                 <HeatMap
                   center={[data.location.lat, data.location.lon]}
                   riskScore={data.risk.score}
+                  aqi={data.aqi.aqi}
                 />
               </div>
             </div>

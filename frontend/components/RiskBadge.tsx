@@ -12,7 +12,7 @@ const LEVEL_CLASS: Record<string, string> = {
 };
 
 export default function RiskBadge({ level, score, size = "md" }: RiskBadgeProps) {
-  const cls = LEVEL_CLASS[level] ?? "risk-badge bg-slate-700 text-slate-300";
+  const cls = LEVEL_CLASS[level] ?? "risk-badge bg-slate-100 text-muted";
   return (
     <span className={`${cls} ${size === "sm" ? "text-xs px-2 py-0.5" : ""}`}>
       {level}

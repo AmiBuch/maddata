@@ -218,16 +218,16 @@ function worseTier(tiers: string[]): string {
 }
 
 const TIER_COLOR: Record<string, string> = {
-    Low: "text-green-400",
-    Moderate: "text-yellow-400",
-    High: "text-orange-400",
-    "Very High": "text-red-400",
+    Low: "text-green-600",
+    Moderate: "text-yellow-600",
+    High: "text-orange-600",
+    "Very High": "text-red-600",
 };
 const TIER_BG: Record<string, string> = {
-    Low: "border-green-500/20",
-    Moderate: "border-yellow-500/20",
-    High: "border-orange-500/20",
-    "Very High": "border-red-500/20",
+    Low: "border-green-200",
+    Moderate: "border-yellow-200",
+    High: "border-orange-200",
+    "Very High": "border-red-200",
 };
 
 const SUGGESTION_START_HOUR = 8;
@@ -240,9 +240,9 @@ function respiratoryRiskLabel(risk: number): "Low" | "Medium" | "High" {
 }
 
 function respiratoryRiskColor(label: "Low" | "Medium" | "High"): string {
-    if (label === "Low") return "text-green-400";
-    if (label === "Medium") return "text-yellow-400";
-    return "text-red-400";
+    if (label === "Low") return "text-green-600";
+    if (label === "Medium") return "text-yellow-600";
+    return "text-red-600";
 }
 
 function bestOutdoorWindow(hourly: ForecastResult["hourly_breakdown"]): { hour: number; aqi: number } | null {
@@ -585,9 +585,9 @@ export default function ItineraryPage() {
             {/* Page header */}
             <div>
                 <h1 className="text-2xl font-bold flex items-center gap-2">
-                    <MapIcon className="text-violet-400" size={24} /> Upload Itinerary
+                    <MapIcon className="text-accent" size={24} /> Upload Itinerary
                 </h1>
-                <p className="text-slate-400 text-sm mt-1">
+                <p className="text-muted text-sm mt-1">
                     Upload a PDF travel plan — Gemini extracts it, our ML model predicts the air quality.
                 </p>
             </div>
@@ -599,16 +599,16 @@ export default function ItineraryPage() {
                         onDrop={onDrop}
                         onDragOver={e => e.preventDefault()}
                         onClick={() => fileInputRef.current?.click()}
-                        className="border-2 border-dashed border-slate-600 hover:border-teal-500 rounded-xl
+                        className="border-2 border-dashed border-slate-300 hover:border-primary rounded-xl
                        flex flex-col items-center justify-center gap-3 py-16 px-8 cursor-pointer
-                       transition-colors bg-slate-900/30 hover:bg-teal-900/10"
+                       transition-colors bg-slate-50 hover:bg-highlight"
                     >
-                        <Upload className="text-slate-500" size={40} />
+                        <Upload className="text-muted" size={40} />
                         <div className="text-center">
-                            <p className="text-slate-300 font-medium">Drag &amp; drop your PDF itinerary</p>
-                            <p className="text-slate-500 text-sm mt-1">or click to browse</p>
+                            <p className="text-heading font-medium">Drag &amp; drop your PDF itinerary</p>
+                            <p className="text-muted text-sm mt-1">or click to browse</p>
                         </div>
-                        <span className="text-xs text-slate-600">PDF only · processed entirely in your browser</span>
+                        <span className="text-xs text-muted">PDF only · processed entirely in your browser</span>
                     </div>
                     <input
                         ref={fileInputRef}
@@ -626,7 +626,7 @@ export default function ItineraryPage() {
                     </button>
 
                     {error && (
-                        <div className="card border-red-500/20 bg-red-500/10 flex items-center gap-2 text-red-400 text-sm">
+                        <div className="card border-red-200 bg-red-50 flex items-center gap-2 text-red-600 text-sm">
                             <AlertTriangle size={16} /> {error}
                         </div>
                     )}
@@ -638,10 +638,10 @@ export default function ItineraryPage() {
                 <div className="space-y-6">
                     {/* Parsing indicator */}
                     <div className="card flex items-center gap-4">
-                        <Loader2 className="text-teal-400 animate-spin flex-shrink-0" size={28} />
+                        <Loader2 className="text-primary animate-spin flex-shrink-0" size={28} />
                         <div>
-                            <p className="font-medium text-slate-200">{parseStatus}</p>
-                            <p className="text-xs text-slate-500 mt-0.5">
+                            <p className="font-medium text-heading">{parseStatus}</p>
+                            <p className="text-xs text-muted mt-0.5">
                                 Pick your health conditions while we work — no dead wait time.
                             </p>
                         </div>
@@ -659,8 +659,8 @@ export default function ItineraryPage() {
                     <ConditionChips selected={conditions} onToggle={toggleCondition} />
 
                     <div className="space-y-4">
-                        <h2 className="text-lg font-semibold text-slate-200 flex items-center gap-2">
-                            <FileText size={18} className="text-violet-400" />
+                        <h2 className="text-lg font-semibold text-heading flex items-center gap-2">
+                            <FileText size={18} className="text-accent" />
                             Review your itinerary — fix anything before analysis
                         </h2>
 
@@ -676,7 +676,7 @@ export default function ItineraryPage() {
                                                 ...prev,
                                                 days: prev.days.map((d, i) => i !== di ? d : { ...d, date: e.target.value }),
                                             }))}
-                                        className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm"
+                                        className="bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-sm text-body focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary"
                                     />
                                     <input
                                         type="text"
@@ -687,14 +687,14 @@ export default function ItineraryPage() {
                                                 ...prev,
                                                 days: prev.days.map((d, i) => i !== di ? d : { ...d, city: e.target.value }),
                                             }))}
-                                        className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm flex-1 min-w-[140px]"
+                                        className="bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-sm text-body focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary flex-1 min-w-[140px]"
                                     />
                                 </div>
 
                                 {/* Activity rows — inline editable */}
                                 <div className="space-y-1.5">
                                     {day.activities.map((act, ai) => (
-                                        <div key={ai} className="flex items-center gap-2 flex-wrap bg-slate-800/50 rounded-lg px-3 py-2">
+                                        <div key={ai} className="flex items-center gap-2 flex-wrap bg-slate-50 rounded-lg px-3 py-2">
                                             <input
                                                 type="time"
                                                 value={act.time}
@@ -713,18 +713,18 @@ export default function ItineraryPage() {
                                                 placeholder="Location"
                                                 value={act.location}
                                                 onChange={e => updateActivity(di, ai, "location", e.target.value)}
-                                                className="bg-transparent text-xs text-slate-400 flex-1 min-w-[120px] outline-none"
+                                                className="bg-transparent text-xs text-muted flex-1 min-w-[120px] outline-none"
                                             />
                                             <select
                                                 value={act.type}
                                                 onChange={e => updateActivity(di, ai, "type", e.target.value)}
-                                                className="bg-slate-700 border border-slate-600 rounded px-1.5 py-0.5 text-xs"
+                                                className="bg-white border border-slate-300 rounded px-1.5 py-0.5 text-xs text-body"
                                             >
                                                 {ACTIVITY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                                             </select>
                                             <button
                                                 onClick={() => removeActivity(di, ai)}
-                                                className="text-slate-500 hover:text-red-400 transition-colors"
+                                                className="text-muted hover:text-red-500 transition-colors"
                                             >
                                                 <Trash2 size={14} />
                                             </button>
@@ -732,7 +732,7 @@ export default function ItineraryPage() {
                                     ))}
                                     <button
                                         onClick={() => addActivity(di)}
-                                        className="flex items-center gap-1 text-xs text-violet-400 hover:text-violet-300 transition-colors mt-1"
+                                        className="flex items-center gap-1 text-xs text-accent hover:text-primary transition-colors mt-1"
                                     >
                                         <Plus size={12} /> Add activity
                                     </button>
@@ -742,7 +742,7 @@ export default function ItineraryPage() {
                     </div>
 
                     {error && (
-                        <div className="card border-red-500/20 bg-red-500/10 flex items-center gap-2 text-red-400 text-sm">
+                        <div className="card border-red-200 bg-red-50 flex items-center gap-2 text-red-600 text-sm">
                             <AlertTriangle size={16} /> {error}
                         </div>
                     )}
@@ -765,10 +765,10 @@ export default function ItineraryPage() {
             {/* ── STATE 4: Analyzing ─────────────────────────────────────────────── */}
             {pageState === "analyzing" && (
                 <div className="card flex flex-col items-center gap-4 py-12">
-                    <Loader2 className="text-teal-400 animate-spin" size={40} />
+                    <Loader2 className="text-primary animate-spin" size={40} />
                     <div className="text-center">
-                        <p className="font-medium text-slate-200">Fetching environmental forecasts…</p>
-                        <p className="text-slate-500 text-sm mt-1">
+                        <p className="font-medium text-heading">Fetching environmental forecasts…</p>
+                        <p className="text-muted text-sm mt-1">
                             Geocoding locations · calling ML forecast API · computing per-activity risk
                         </p>
                     </div>
@@ -791,15 +791,15 @@ export default function ItineraryPage() {
                         const envForecast = buildEnvForecast(day.forecast);
 
                         return (
-                            <div key={di} className={`card border ${TIER_BG[day.overallTier] ?? "border-slate-700"}`}>
+                            <div key={di} className={`card border ${TIER_BG[day.overallTier] ?? "border-slate-200"}`}>
                                 {/* Day card header */}
                                 <button
                                     className="w-full flex items-center justify-between gap-3"
                                     onClick={() => setExpandedDay(isOpen ? null : di)}
                                 >
                                     <div className="flex items-center gap-3 flex-wrap">
-                                        <span className="text-slate-400 text-sm">{day.date}</span>
-                                        <span className="font-medium text-slate-300">{day.city}</span>
+                                        <span className="text-muted text-sm">{day.date}</span>
+                                        <span className="font-medium text-heading">{day.city}</span>
                                         <span className={`text-sm font-semibold ${TIER_COLOR[day.overallTier]}`}>
                                             {day.overallTier} risk ({day.overallScore})
                                         </span>
@@ -809,22 +809,22 @@ export default function ItineraryPage() {
                                 </button>
 
                                 {isOpen && (
-                                    <div className="mt-4 space-y-5 border-t border-slate-800 pt-4">
+                                    <div className="mt-4 space-y-5 border-t border-slate-200 pt-4">
                                         {day.visits && (
-                                            <div className="px-3 py-2 text-sm text-slate-300 border-b border-slate-800/40">
+                                            <div className="px-3 py-2 text-sm text-body border-b border-slate-200">
                                                 {day.visits.respiratory_risk_percent !== undefined ? (
                                                     <div className="text-base md:text-lg">
                                                         Respiratory visit risk: {" "}
                                                         <strong className={respiratoryRiskColor(respiratoryRiskLabel(day.visits.respiratory_risk_percent))}>
                                                             {respiratoryRiskLabel(day.visits.respiratory_risk_percent)}
                                                         </strong>
-                                                        <span className="text-slate-400"> ({day.visits.respiratory_risk_percent.toFixed(2)}%)</span>
+                                                        <span className="text-muted"> ({day.visits.respiratory_risk_percent.toFixed(2)}%)</span>
                                                     </div>
-                                                ) : <div className="text-xs text-slate-500">Model not available — showing environmental forecast only.</div>}
+                                                ) : <div className="text-xs text-muted">Model not available — showing environmental forecast only.</div>}
                                             </div>
                                         )}
                                         {day.daySuggestion && (
-                                            <div className="px-3 py-2 text-sm text-emerald-300 border-b border-slate-800/40">
+                                            <div className="px-3 py-2 text-sm text-green-600 border-b border-slate-200">
                                                 {day.daySuggestion}
                                             </div>
                                         )}
@@ -847,29 +847,29 @@ export default function ItineraryPage() {
 
                                         {/* Per-activity risk cards */}
                                         <div>
-                                            <h4 className="text-sm font-semibold text-slate-400 mb-2">
+                                            <h4 className="text-sm font-semibold text-muted mb-2">
                                                 Activity Breakdown
                                             </h4>
                                             <div className="space-y-2">
                                                 {day.activities.map((act, ai) => (
                                                     <div
                                                         key={ai}
-                                                        className={`rounded-lg px-3 py-2.5 border ${TIER_BG[act.riskTier]} bg-slate-900/40`}
+                                                        className={`rounded-lg px-3 py-2.5 border ${TIER_BG[act.riskTier]} bg-white`}
                                                     >
                                                         <div className="flex items-start justify-between gap-2">
                                                             <div>
-                                                                <span className="font-medium text-slate-200 text-sm">{act.name}</span>
-                                                                <span className="text-slate-500 text-xs ml-2">{act.time} · {act.location}</span>
+                                                                <span className="font-medium text-heading text-sm">{act.name}</span>
+                                                                <span className="text-muted text-xs ml-2">{act.time} · {act.location}</span>
                                                             </div>
                                                             <span className={`text-xs font-semibold flex-shrink-0 ${TIER_COLOR[act.riskTier]}`}>
                                                                 {act.riskTier}
                                                             </span>
                                                         </div>
                                                         {act.flags.map((f, fi) => (
-                                                            <p key={fi} className="text-xs text-orange-400 mt-1">⚠ {f}</p>
+                                                            <p key={fi} className="text-xs text-orange-600 mt-1">⚠ {f}</p>
                                                         ))}
                                                         {act.betterTime && (
-                                                            <p className="text-xs text-emerald-400 mt-1">💡 {act.betterTime}</p>
+                                                            <p className="text-xs text-green-600 mt-1">💡 {act.betterTime}</p>
                                                         )}
                                                     </div>
                                                 ))}
@@ -878,12 +878,12 @@ export default function ItineraryPage() {
 
                                         {/* Collapsible EnvForecastPanel */}
                                         {envForecast && (
-                                            <div className="border border-slate-700/50 rounded-lg overflow-hidden">
+                                            <div className="border border-slate-200 rounded-lg overflow-hidden">
                                                 <button
-                                                    className="w-full flex items-center justify-between px-3 py-2.5 bg-slate-800/40 text-sm"
+                                                    className="w-full flex items-center justify-between px-3 py-2.5 bg-slate-50 text-sm"
                                                     onClick={() => setExpandedEnv(isEnvOpen ? null : di)}
                                                 >
-                                                    <span className="text-teal-400 font-medium">Environmental Details</span>
+                                                    <span className="text-primary font-medium">Environmental Details</span>
                                                     {isEnvOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                                                 </button>
                                                 {isEnvOpen && (
@@ -917,16 +917,16 @@ function ConditionChips({
 }) {
     return (
         <div className="card space-y-2">
-            <p className="text-sm font-semibold text-slate-300">Your health conditions</p>
-            <p className="text-xs text-slate-500">Selected conditions adjust the risk weights applied to the forecast.</p>
+            <p className="text-sm font-semibold text-heading">Your health conditions</p>
+            <p className="text-xs text-muted">Selected conditions adjust the risk weights applied to the forecast.</p>
             <div className="flex flex-wrap gap-2 mt-1">
                 {HEALTH_CHIPS.map(c => (
                     <button
                         key={c}
                         onClick={() => onToggle(c)}
                         className={`px-3 py-1 rounded-full text-sm border transition-colors ${selected.includes(c)
-                            ? "bg-teal-600 border-teal-500 text-white"
-                            : "bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-500"
+                            ? "bg-primary border-primary text-white"
+                            : "bg-white border-slate-300 text-muted hover:border-primary"
                             }`}
                     >
                         {c}

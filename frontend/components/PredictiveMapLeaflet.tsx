@@ -492,7 +492,10 @@ export default function PredictiveMapLeaflet({
       (pos) => {
         setUserLocation([pos.coords.latitude, pos.coords.longitude]);
       },
-      (err) => console.warn(err),
+      () => {
+        console.warn("Geolocation denied, using default location.");
+        setUserLocation(center);
+      },
       { enableHighAccuracy: true }
     );
   }, []);
@@ -503,8 +506,8 @@ export default function PredictiveMapLeaflet({
   
     const map = L.map(mapContainerRef.current, { center: userLocation, zoom: initialZoom });
   
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: "© OpenStreetMap © CARTO",
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: "\u00a9 OpenStreetMap \u00a9 CARTO",
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
@@ -512,7 +515,7 @@ export default function PredictiveMapLeaflet({
         // Add user location marker
         const userMarker = L.circleMarker(userLocation, {
           radius: 8,
-          fillColor: "#14b8a6",
+          fillColor: "#6a8ce8",
           fillOpacity: 1,
           color: "#ffffff",
           weight: 2,
@@ -534,7 +537,7 @@ export default function PredictiveMapLeaflet({
         "leaflet-bar leaflet-control"
       );
 
-      container.style.backgroundColor = "#0f172a";
+      container.style.backgroundColor = "#ffffff";
       container.style.width = "42px";
       container.style.height = "42px";
       container.style.fontSize = "18px";
@@ -680,9 +683,9 @@ export default function PredictiveMapLeaflet({
       <div className="flex flex-wrap items-center gap-4 text-sm">
           <div className="flex flex-wrap items-center gap-3">
           {[
-            { key: "airQuality", label: "Air Quality", activeClass: "bg-teal-600 text-white" },
-            { key: "outbreak", label: "Outbreak Activity", activeClass: "bg-teal-600 text-white" },
-            { key: "historicalRisk", label: "Historical Risk", activeClass: "bg-teal-600 text-white" },
+            { key: "airQuality", label: "Air Quality", activeClass: "bg-primary text-white" },
+            { key: "outbreak", label: "Outbreak Activity", activeClass: "bg-primary text-white" },
+            { key: "historicalRisk", label: "Historical Risk", activeClass: "bg-primary text-white" },
           ].map(({ key, label, activeClass }) => {
             const active = selectedLayer === key;
             return (
@@ -694,7 +697,7 @@ export default function PredictiveMapLeaflet({
                   ${
                     active
                       ? activeClass
-                      : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+                      : "bg-slate-100 text-body hover:bg-slate-200"
                   }`}
               >
                 {label}
@@ -706,17 +709,17 @@ export default function PredictiveMapLeaflet({
         {selectedLayer === "historicalRisk" &&
           routeLine &&
           routeIntersectsHighRisk(routeLine, historicalRiskData) && (
-            <span className="text-amber-400 text-xs font-medium flex items-center gap-1">
+            <span className="text-amber-600 text-xs font-medium flex items-center gap-1">
               Route crosses high-risk zone
             </span>
           )}
 
         {hasAqiTimeseries && selectedLayer === "airQuality" && (
-          <div className="flex items-center gap-2 ml-auto pl-4 border-l border-slate-700">
+          <div className="flex items-center gap-2 ml-auto pl-4 border-l border-slate-200">
             <button
               type="button"
               onClick={() => setAqiPlaying((p) => !p)}
-              className="px-2 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-medium"
+              className="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-body text-xs font-medium"
             >
               {aqiPlaying ? "Pause" : "Play"}
             </button>
@@ -726,9 +729,9 @@ export default function PredictiveMapLeaflet({
               max={airQualityFrames.length - 1}
               value={aqiTimeIndex}
               onChange={(e) => setAqiTimeIndex(Number(e.target.value))}
-              className="w-24 h-2 rounded accent-teal-500"
+              className="w-24 h-2 rounded accent-primary"
             />
-            <span className="text-slate-500 text-xs">
+            <span className="text-muted text-xs">
               {aqiTimeIndex + 1} / {airQualityFrames.length}
             </span>
           </div>
@@ -737,7 +740,7 @@ export default function PredictiveMapLeaflet({
 
       <div
         ref={mapContainerRef}
-        className="w-full min-h-[320px] rounded-xl overflow-hidden bg-slate-900 leaflet-container"
+        className="w-full min-h-[320px] rounded-xl overflow-hidden bg-slate-100 leaflet-container"
         style={{ flex: "1 1 320px" }}
       />
     </div>

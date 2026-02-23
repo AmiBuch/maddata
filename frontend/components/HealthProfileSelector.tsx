@@ -45,25 +45,25 @@ export default function HealthProfileSelector({ selected, onChange }: Props) {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 z-50 bg-slate-900 border border-slate-700 rounded-xl shadow-xl p-3 min-w-[220px]">
-          <p className="text-xs text-slate-400 mb-2 font-medium">Select your health conditions</p>
+        <div className="absolute right-0 top-full mt-2 z-50 bg-white border border-slate-200 rounded-xl shadow-xl p-3 min-w-[220px]">
+          <p className="text-xs text-muted mb-2 font-medium">Select your health conditions</p>
           <div className="space-y-1">
             {CONDITIONS.map((c) => (
-              <label key={c} className="flex items-center gap-2 cursor-pointer hover:bg-slate-800 rounded-lg px-2 py-1.5">
+              <label key={c} className="flex items-center gap-2 cursor-pointer hover:bg-slate-50 rounded-lg px-2 py-1.5">
                 <input
                   type="checkbox"
                   checked={selected.includes(c)}
                   onChange={() => toggle(c)}
-                  className="accent-teal-500"
+                  className="accent-primary"
                 />
-                <span className="text-sm text-slate-200">{c}</span>
+                <span className="text-sm text-body">{c}</span>
               </label>
             ))}
           </div>
           {selected.length > 0 && (
             <button
               onClick={() => onChange([])}
-              className="mt-2 flex items-center gap-1 text-xs text-slate-500 hover:text-red-400 transition-colors"
+              className="mt-2 flex items-center gap-1 text-xs text-muted hover:text-red-500 transition-colors"
             >
               <X size={10} /> Clear all
             </button>

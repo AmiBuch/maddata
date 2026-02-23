@@ -185,6 +185,38 @@ def _sanitize_for_json(obj: Any) -> Any:
     return obj
 
 
+def _safe_predict(model, arr: np.ndarray) -> np.ndarray:
+    """Call model.predict, bypassing sklearn Pipeline if __sklearn_tags__ is broken.
+
+    Older XGBoost pickles can fail with sklearn 1.6+ because the deserialized
+    XGBRegressor's __sklearn_tags__ method raises AttributeError.  In that case
+    we manually run each pipeline step and use the XGBoost Booster directly.
+    """
+    try:
+        return model.predict(arr)
+    except AttributeError as exc:
+        if "__sklearn_tags__" not in str(exc):
+            raise
+        logger.warning("Pipeline.predict() hit __sklearn_tags__ error; falling back to manual steps")
+
+    # Manual pipeline execution
+    import xgboost as xgb_lib
+
+    steps = getattr(model, "steps", None)
+    if not steps:
+        raise RuntimeError("Model is not a Pipeline and predict() failed")
+
+    X = arr
+    for name, step in steps[:-1]:  # all transform steps
+        X = step.transform(X)
+
+    # Last step is the XGBRegressor — use its booster directly
+    last_step = steps[-1][1]
+    booster = last_step.get_booster()
+    dmat = xgb_lib.DMatrix(X)
+    return booster.predict(dmat)
+
+
 async def predict_percent_visits_for_date(
     lat: float,
     lon: float,
@@ -229,7 +261,7 @@ async def predict_percent_visits_for_date(
                     X = X[:expected]
 
             arr = np.asarray([X], dtype=float)
-            pred = model.predict(arr)
+            pred = _safe_predict(model, arr)
             if hasattr(pred, "shape") and pred.shape:
                 model_pred = float(np.array(pred).ravel()[0])
             else:

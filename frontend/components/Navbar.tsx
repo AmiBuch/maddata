@@ -19,7 +19,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg">
           <Activity size={20} className="text-brand-500" />
-          <span className="text-slate-800">PurePath</span>
+          <span className="text-heading">PurePath</span>
         </Link>
 
         {/* Nav links */}
@@ -33,7 +33,7 @@ export default function Navbar() {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   active
                     ? "bg-brand-500/15 text-brand-500"
-                    : "text-slate-500 hover:text-slate-800 hover:bg-slate-100"
+                    : "text-slate-500 hover:text-heading hover:bg-slate-100"
                 }`}
               >
                 <Icon size={14} />
