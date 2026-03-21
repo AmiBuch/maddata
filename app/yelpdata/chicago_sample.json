@@ -1,0 +1,22 @@
+{"business_id":"chicago001","name":"Millennium Park","address":"201 E Randolph St","city":"Chicago","state":"IL","postal_code":"60602","latitude":41.8827,"longitude":-87.6194,"stars":4.7,"review_count":15432,"is_open":1,"categories":"Parks, Tourist Attractions"}
+
+{"business_id":"chicago002","name":"Art Institute of Chicago","address":"111 S Michigan Ave","city":"Chicago","state":"IL","postal_code":"60603","latitude":41.8796,"longitude":-87.6237,"stars":4.8,"review_count":12876,"is_open":1,"categories":"Museums, Tourist Attractions"}
+
+{"business_id":"chicago003","name":"Navy Pier","address":"600 E Grand Ave","city":"Chicago","state":"IL","postal_code":"60611","latitude":41.8916,"longitude":-87.6074,"stars":4.5,"review_count":11234,"is_open":1,"categories":"Amusement Parks, Tourist Attractions"}
+
+{"business_id":"chicago004","name":"Lincoln Park Zoo","address":"2001 N Clark St","city":"Chicago","state":"IL","postal_code":"60614","latitude":41.9214,"longitude":-87.6336,"stars":4.6,"review_count":9345,"is_open":1,"categories":"Zoos, Tourist Attractions"}
+
+{"business_id":"chicago005","name":"Skydeck Chicago","address":"233 S Wacker Dr","city":"Chicago","state":"IL","postal_code":"60606","latitude":41.8789,"longitude":-87.6359,"stars":4.6,"review_count":8452,"is_open":1,"categories":"Observatories, Tourist Attractions"}
+{"business_id":"chicago006","name":"Shedd Aquarium","address":"1200 S Lake Shore Dr","city":"Chicago","state":"IL","postal_code":"60605","latitude":41.8676,"longitude":-87.6140,"stars":4.6,"review_count":10234,"is_open":1,"categories":"Aquariums, Tourist Attractions, Museums"}
+
+{"business_id":"chicago007","name":"Cloud Gate (The Bean)","address":"201 E Randolph St","city":"Chicago","state":"IL","postal_code":"60602","latitude":41.8827,"longitude":-87.6233,"stars":4.8,"review_count":19876,"is_open":1,"categories":"Landmarks & Historical Buildings, Tourist Attractions, Public Art"}
+
+{"business_id":"chicago008","name":"Chicago Riverwalk","address":"Chicago Riverwalk","city":"Chicago","state":"IL","postal_code":"60601","latitude":41.8880,"longitude":-87.6226,"stars":4.7,"review_count":8450,"is_open":1,"categories":"Parks, Walking Tours, Tourist Attractions"}
+
+{"business_id":"edw001","name":"The Gardens at SIUE","address":"6 Arboretum Ln","city":"Edwardsville","state":"IL","postal_code":"62026","latitude":38.7910,"longitude":-89.9970,"stars":4.7,"review_count":312,"is_open":1,"categories":"Botanical Gardens, Parks, Tourist Attractions"}
+
+{"business_id":"edw002","name":"Edwardsville Children's Museum","address":"727 N Main St","city":"Edwardsville","state":"IL","postal_code":"62025","latitude":38.8172,"longitude":-89.9570,"stars":4.6,"review_count":189,"is_open":1,"categories":"Children's Museums, Museums, Tourist Attractions"}
+
+{"business_id":"edw003","name":"Watershed Nature Center","address":"1591 Tower Ave","city":"Edwardsville","state":"IL","postal_code":"62025","latitude":38.7936,"longitude":-89.9785,"stars":4.7,"review_count":221,"is_open":1,"categories":"Nature Centers, Parks, Hiking"}
+
+{"business_id":"edw004","name":"Edwardsville City Park","address":"101 S Buchanan St","city":"Edwardsville","state":"IL","postal_code":"62025","latitude":38.8112,"longitude":-89.9565,"stars":4.5,"review_count":154,"is_open":1,"categories":"Parks, Playgrounds, Tourist Attractions"}
